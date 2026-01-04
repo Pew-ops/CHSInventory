@@ -106,40 +106,40 @@
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin1.cs">
+    <Compile Include="Admin\Admin1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin1.Designer.cs">
+    <Compile Include="Admin\Admin1.Designer.cs">
       <DependentUpon>Admin1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admindashboard.cs">
+    <Compile Include="Admin\Admindashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admindashboard.Designer.cs">
+    <Compile Include="Admin\Admindashboard.Designer.cs">
       <DependentUpon>Admindashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="adminInventory.cs">
+    <Compile Include="Admin\adminInventory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="adminInventory.Designer.cs">
+    <Compile Include="Admin\adminInventory.Designer.cs">
       <DependentUpon>adminInventory.cs</DependentUpon>
     </Compile>
-    <Compile Include="adminPatient.cs">
+    <Compile Include="Admin\adminPatient.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="adminPatient.Designer.cs">
+    <Compile Include="Admin\adminPatient.Designer.cs">
       <DependentUpon>adminPatient.cs</DependentUpon>
     </Compile>
-    <Compile Include="adminStock.cs">
+    <Compile Include="Admin\adminStock.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="adminStock.Designer.cs">
+    <Compile Include="Admin\adminStock.Designer.cs">
       <DependentUpon>adminStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="adminUser.cs">
+    <Compile Include="Admin\adminUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="adminUser.Designer.cs">
+    <Compile Include="Admin\adminUser.Designer.cs">
       <DependentUpon>adminUser.cs</DependentUpon>
     </Compile>
     <Compile Include="login.cs">
@@ -148,45 +148,45 @@
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Nurse.cs">
+    <Compile Include="Nurse\Nurse.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Nurse.Designer.cs">
+    <Compile Include="Nurse\Nurse.Designer.cs">
       <DependentUpon>Nurse.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sta.cs">
+    <Compile Include="STA\Sta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sta.Designer.cs">
+    <Compile Include="STA\Sta.Designer.cs">
       <DependentUpon>Sta.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin1.resx">
+    <EmbeddedResource Include="Admin\Admin1.resx">
       <DependentUpon>Admin1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admindashboard.resx">
+    <EmbeddedResource Include="Admin\Admindashboard.resx">
       <DependentUpon>Admindashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="adminInventory.resx">
+    <EmbeddedResource Include="Admin\adminInventory.resx">
       <DependentUpon>adminInventory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="adminPatient.resx">
+    <EmbeddedResource Include="Admin\adminPatient.resx">
       <DependentUpon>adminPatient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="adminStock.resx">
+    <EmbeddedResource Include="Admin\adminStock.resx">
       <DependentUpon>adminStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="adminUser.resx">
+    <EmbeddedResource Include="Admin\adminUser.resx">
       <DependentUpon>adminUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Nurse.resx">
+    <EmbeddedResource Include="Nurse\Nurse.resx">
       <DependentUpon>Nurse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -199,7 +199,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Sta.resx">
+    <EmbeddedResource Include="STA\Sta.resx">
       <DependentUpon>Sta.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -231,5 +231,6 @@
   <ItemGroup>
     <None Include="Resources\available.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
