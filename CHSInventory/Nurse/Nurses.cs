@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CHSInventory
 {
-    public partial class Nurse : Form
+    public partial class Nurses : Form
     {
-        public Nurse()
+        public Nurses()
         {
             InitializeComponent();
         }
@@ -28,6 +28,11 @@ namespace CHSInventory
         }
 
         private void Nurse_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

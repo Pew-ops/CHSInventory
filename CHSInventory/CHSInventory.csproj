@@ -67,6 +67,7 @@
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
     </Reference>
@@ -118,29 +119,29 @@
     <Compile Include="Admin\Admindashboard.Designer.cs">
       <DependentUpon>Admindashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\adminInventory.cs">
+    <Compile Include="Admin\AdminInventory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\adminInventory.Designer.cs">
-      <DependentUpon>adminInventory.cs</DependentUpon>
+    <Compile Include="Admin\AdminInventory.Designer.cs">
+      <DependentUpon>AdminInventory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\adminPatient.cs">
+    <Compile Include="Admin\AdminPatient.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\adminPatient.Designer.cs">
-      <DependentUpon>adminPatient.cs</DependentUpon>
+    <Compile Include="Admin\AdminPatient.Designer.cs">
+      <DependentUpon>AdminPatient.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\adminStock.cs">
+    <Compile Include="Admin\AdminStock.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\adminStock.Designer.cs">
-      <DependentUpon>adminStock.cs</DependentUpon>
+    <Compile Include="Admin\AdminStock.Designer.cs">
+      <DependentUpon>AdminStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\adminUser.cs">
+    <Compile Include="Admin\AdminUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\adminUser.Designer.cs">
-      <DependentUpon>adminUser.cs</DependentUpon>
+    <Compile Include="Admin\AdminUser.Designer.cs">
+      <DependentUpon>AdminUser.cs</DependentUpon>
     </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
@@ -148,11 +149,41 @@
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Nurse\Nurse.cs">
+    <Compile Include="Nurse\NursePatient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Nurse\NursePatient.Designer.cs">
+      <DependentUpon>NursePatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nurse\Nurses.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Nurse\Nurse.Designer.cs">
-      <DependentUpon>Nurse.cs</DependentUpon>
+    <Compile Include="Nurse\Nurses.Designer.cs">
+      <DependentUpon>Nurses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nurse\NurseDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Nurse\NurseDashboard.Designer.cs">
+      <DependentUpon>NurseDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nurse\NurseInventory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Nurse\NurseInventory.Designer.cs">
+      <DependentUpon>NurseInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nurse\NurseReceive.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Nurse\NurseReceive.Designer.cs">
+      <DependentUpon>NurseReceive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nurse\NurseWastage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Nurse\NurseWastage.Designer.cs">
+      <DependentUpon>NurseWastage.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -171,23 +202,38 @@
     <EmbeddedResource Include="Admin\Admindashboard.resx">
       <DependentUpon>Admindashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\adminInventory.resx">
-      <DependentUpon>adminInventory.cs</DependentUpon>
+    <EmbeddedResource Include="Admin\AdminInventory.resx">
+      <DependentUpon>AdminInventory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\adminPatient.resx">
-      <DependentUpon>adminPatient.cs</DependentUpon>
+    <EmbeddedResource Include="Admin\AdminPatient.resx">
+      <DependentUpon>AdminPatient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\adminStock.resx">
-      <DependentUpon>adminStock.cs</DependentUpon>
+    <EmbeddedResource Include="Admin\AdminStock.resx">
+      <DependentUpon>AdminStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\adminUser.resx">
-      <DependentUpon>adminUser.cs</DependentUpon>
+    <EmbeddedResource Include="Admin\AdminUser.resx">
+      <DependentUpon>AdminUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Nurse\Nurse.resx">
-      <DependentUpon>Nurse.cs</DependentUpon>
+    <EmbeddedResource Include="Nurse\NursePatient.resx">
+      <DependentUpon>NursePatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nurse\Nurses.resx">
+      <DependentUpon>Nurses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nurse\NurseDashboard.resx">
+      <DependentUpon>NurseDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nurse\NurseInventory.resx">
+      <DependentUpon>NurseInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nurse\NurseReceive.resx">
+      <DependentUpon>NurseReceive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nurse\NurseWastage.resx">
+      <DependentUpon>NurseWastage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

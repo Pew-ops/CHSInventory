@@ -8,16 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CHSInventory
+namespace CHSInventory.Nurse
 {
-    public partial class AdminInventory : UserControl
+    public partial class NurseWastage : UserControl
     {
-        public AdminInventory()
+        public NurseWastage()
         {
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void NurseWastage_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

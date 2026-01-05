@@ -1,6 +1,6 @@
 ﻿namespace CHSInventory
 {
-    partial class adminStock
+    partial class AdminStock
     {
         /// <summary> 
         /// Required designer variable.

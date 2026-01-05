@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CHSInventory
+namespace CHSInventory.Nurse
 {
-    public partial class AdminPatient : UserControl
+    public partial class NurseInventory : UserControl
     {
-        public AdminPatient()
+        public NurseInventory()
         {
             InitializeComponent();
         }

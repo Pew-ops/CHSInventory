@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CHSInventory
 {
-    public partial class adminStock : UserControl
+    public partial class AdminStock : UserControl
     {
-        public adminStock()
+        public AdminStock()
         {
             InitializeComponent();
         }

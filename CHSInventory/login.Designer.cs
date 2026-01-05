@@ -52,6 +52,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(574, 910);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox1
             // 
@@ -155,7 +156,7 @@
             this.cmbrole1.ItemHeight = 30;
             this.cmbrole1.Items.AddRange(new object[] {
             "Admin",
-            "Nurse",
+            "Nurses",
             "STA"});
             this.cmbrole1.Location = new System.Drawing.Point(637, 449);
             this.cmbrole1.Name = "cmbrole1";
