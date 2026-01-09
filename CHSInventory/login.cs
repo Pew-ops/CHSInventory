@@ -1,11 +1,18 @@
-﻿using Guna.UI2.WinForms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Windows.Forms;
-using System.Configuration;
+﻿using CHSInventory.Admin;
+using Guna.UI2.WinForms;
 using MySql.Data.MySqlClient;
+using System;
+using System.Configuration;
+using System.Data;
+using System.Web.Security;
+using System.Windows.Forms;
+using CHSInventory.Admin;  // important
+using MyUser = CHSInventory.Admin.User1;
+using MyUserFactory = CHSInventory.Admin.UserFactory;
+
+
+
+
 
 
 
@@ -53,8 +60,9 @@ namespace CHSInventory
         private void btnlogin1_Click(object sender, EventArgs e)
         {
 
-        string connectionString = ConfigurationManager
-       .ConnectionStrings["CHSInventoryDB"].ConnectionString;
+            // ✅ CREATE USER OBJECT USING FACTORY
+            string connectionString = ConfigurationManager
+             .ConnectionStrings["CHSInventoryDB"].ConnectionString;
 
             string email = txtemail1.Text.Trim();
             string password = txtpassword1.Text.Trim();
@@ -85,33 +93,32 @@ namespace CHSInventory
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
+
+
                         if (reader.Read())
                         {
                             string firstName = reader["first_name"].ToString();
                             string lastName = reader["last_name"].ToString();
                             string role = reader["role"].ToString();
 
-                            MessageBox.Show($"Login successful! Welcome {firstName} {lastName}",
-                                "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show(
+                                $"Login successful! Welcome {firstName} {lastName}",
+                                "Success",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information
+                            );
+                            MyUser user = MyUserFactory.CreateUser(role);
 
-                            // Open dashboard immediately
-                            Form dashboard = null;
-                            switch (role)
+
+                            if (user != null)
                             {
-                                case "Admin":
-                                    dashboard = new Admin1();
-                                    break;
-
-
-                                case "STA":
-                                    dashboard = new Sta();
-                                    break;
+                                this.Hide();   // hide login form
+                                user.Login(); // 🔥 polymorphism (opens correct dashboard)
                             }
-
-                            if (dashboard != null)
+                            else
                             {
-                                dashboard.Show();
-                                this.Hide(); // hide login form
+                                MessageBox.Show("Invalid role assigned to user.",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         else

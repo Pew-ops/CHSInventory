@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CHSInventory.Admin;
+using System;
 using System.Windows.Forms;
 
 namespace CHSInventory
@@ -113,5 +114,7 @@ namespace CHSInventory
             _adminPatient.BringToFront();
             
         }
+
+       
     }
 }

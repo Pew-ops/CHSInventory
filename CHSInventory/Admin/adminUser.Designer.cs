@@ -44,6 +44,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btndelete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -73,9 +75,9 @@
             this.panel1.Controls.Add(this.txtfirstnameadmin);
             this.panel1.Controls.Add(this.btnaddadmin);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(66, 180);
+            this.panel1.Location = new System.Drawing.Point(80, 158);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1459, 326);
+            this.panel1.Size = new System.Drawing.Size(1459, 262);
             this.panel1.TabIndex = 6;
             // 
             // cmbroleadmin
@@ -94,7 +96,7 @@
             "Admin",
             "Nurses",
             "STA"});
-            this.cmbroleadmin.Location = new System.Drawing.Point(826, 52);
+            this.cmbroleadmin.Location = new System.Drawing.Point(808, 40);
             this.cmbroleadmin.Name = "cmbroleadmin";
             this.cmbroleadmin.Size = new System.Drawing.Size(430, 36);
             this.cmbroleadmin.TabIndex = 23;
@@ -112,7 +114,7 @@
             this.txtpasswordadmin.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtpasswordadmin.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtpasswordadmin.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtpasswordadmin.Location = new System.Drawing.Point(826, 124);
+            this.txtpasswordadmin.Location = new System.Drawing.Point(809, 117);
             this.txtpasswordadmin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtpasswordadmin.Name = "txtpasswordadmin";
             this.txtpasswordadmin.PlaceholderText = "";
@@ -125,7 +127,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(700, 139);
+            this.label5.Location = new System.Drawing.Point(700, 133);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(102, 28);
             this.label5.TabIndex = 20;
@@ -153,7 +155,7 @@
             this.txtboxemailadmin.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtboxemailadmin.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtboxemailadmin.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtboxemailadmin.Location = new System.Drawing.Point(184, 218);
+            this.txtboxemailadmin.Location = new System.Drawing.Point(184, 171);
             this.txtboxemailadmin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtboxemailadmin.Name = "txtboxemailadmin";
             this.txtboxemailadmin.PlaceholderText = "";
@@ -166,7 +168,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(90, 233);
+            this.label3.Location = new System.Drawing.Point(106, 189);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 28);
             this.label3.TabIndex = 16;
@@ -184,7 +186,7 @@
             this.txtlastnameadmin.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtlastnameadmin.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtlastnameadmin.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtlastnameadmin.Location = new System.Drawing.Point(184, 124);
+            this.txtlastnameadmin.Location = new System.Drawing.Point(184, 101);
             this.txtlastnameadmin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtlastnameadmin.Name = "txtlastnameadmin";
             this.txtlastnameadmin.PlaceholderText = "";
@@ -197,7 +199,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(58, 139);
+            this.label2.Location = new System.Drawing.Point(58, 117);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 28);
             this.label2.TabIndex = 14;
@@ -205,7 +207,7 @@
             // 
             // txtfirstnameadmin
             // 
-            this.txtfirstnameadmin.BorderRadius = 20;
+            this.txtfirstnameadmin.BorderRadius = 15;
             this.txtfirstnameadmin.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtfirstnameadmin.DefaultText = "";
             this.txtfirstnameadmin.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -215,7 +217,7 @@
             this.txtfirstnameadmin.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtfirstnameadmin.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtfirstnameadmin.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtfirstnameadmin.Location = new System.Drawing.Point(184, 37);
+            this.txtfirstnameadmin.Location = new System.Drawing.Point(184, 31);
             this.txtfirstnameadmin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtfirstnameadmin.Name = "txtfirstnameadmin";
             this.txtfirstnameadmin.PlaceholderText = "";
@@ -230,7 +232,7 @@
             this.btnaddadmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnaddadmin.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnaddadmin.ForeColor = System.Drawing.Color.White;
-            this.btnaddadmin.Location = new System.Drawing.Point(1259, 222);
+            this.btnaddadmin.Location = new System.Drawing.Point(1263, 175);
             this.btnaddadmin.Name = "btnaddadmin";
             this.btnaddadmin.Size = new System.Drawing.Size(157, 56);
             this.btnaddadmin.TabIndex = 12;
@@ -242,17 +244,18 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(74, 528);
+            this.label6.Location = new System.Drawing.Point(60, 482);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(114, 32);
             this.label6.TabIndex = 8;
             this.label6.Text = "All Users";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(60, 121);
+            this.label8.Location = new System.Drawing.Point(60, 108);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(76, 32);
             this.label8.TabIndex = 9;
@@ -261,9 +264,9 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(22, 574);
+            this.panel2.Location = new System.Drawing.Point(80, 531);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1528, 475);
+            this.panel2.Size = new System.Drawing.Size(1459, 374);
             this.panel2.TabIndex = 7;
             // 
             // dataGridView1
@@ -274,14 +277,44 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1528, 475);
+            this.dataGridView1.Size = new System.Drawing.Size(1459, 374);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick_1);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.Brown;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnUpdate.Location = new System.Drawing.Point(1048, 963);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(157, 56);
+            this.btnUpdate.TabIndex = 13;
+            this.btnUpdate.Text = " Update";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btndelete
+            // 
+            this.btndelete.BackColor = System.Drawing.Color.Brown;
+            this.btndelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btndelete.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndelete.ForeColor = System.Drawing.Color.White;
+            this.btndelete.Location = new System.Drawing.Point(1304, 963);
+            this.btndelete.Name = "btndelete";
+            this.btndelete.Size = new System.Drawing.Size(157, 56);
+            this.btndelete.TabIndex = 14;
+            this.btndelete.Text = "Delete";
+            this.btndelete.UseVisualStyleBackColor = false;
+            this.btndelete.Click += new System.EventHandler(this.btndelete_Click);
             // 
             // AdminUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btndelete);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panel2);
@@ -315,5 +348,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btndelete;
     }
 }

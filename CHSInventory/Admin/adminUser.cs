@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Configuration;
-using System.Data;
+
+
 
 namespace CHSInventory
 {
@@ -17,8 +18,11 @@ namespace CHSInventory
     {
         public AdminUser()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            dataGridView1.CellClick += dataGridView1_CellClick_1; // <- attach event in code
         }
+               
+        private int selectedUserId = -1;
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -35,11 +39,6 @@ namespace CHSInventory
              
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-
-        }
 
         private void txtfirstnameadmin_TextChanged(object sender, EventArgs e)
         {
@@ -136,29 +135,158 @@ namespace CHSInventory
         }
 
 
+        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+                // Make sure your DB column is exactly 'user_id'
+                selectedUserId = Convert.ToInt32(row.Cells["user_id"].Value);
+                txtfirstnameadmin.Text = row.Cells["first_name"].Value.ToString();
+                txtlastnameadmin.Text = row.Cells["last_name"].Value.ToString();
+                txtboxemailadmin.Text = row.Cells["email"].Value.ToString();
+                cmbroleadmin.Text = row.Cells["role"].Value.ToString();
+                dataGridView1.Columns["user_id"].Visible = false;
+
+
+                
+            }
+        }
+
+        public void LoadUsers()
+        {
+            string connectionString = ConfigurationManager
+       .ConnectionStrings["CHSInventoryDB"].ConnectionString;
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM users", conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dataGridView1.DataSource = dt;
+
+                // 🔥 MAKE COLUMNS FILL THE GRID
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
         {
 
         }
-        public void LoadUsers()
+
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (selectedUserId == -1)
+            {
+                MessageBox.Show("Please select a user to update.");
+                return;
+            }
+
             string connectionString = ConfigurationManager
                 .ConnectionStrings["CHSInventoryDB"].ConnectionString;
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                conn.Open();
+                try
+                {
+                    conn.Open();
 
-                string query = "SELECT first_name, last_name, email, role, status FROM users";
+                    // Start building query
+                    string query = @"UPDATE users 
+                             SET first_name=@fname, 
+                                 last_name=@lname, 
+                                 email=@email, 
+                                 role=@role";
 
-                MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                    // Add password update only if the textbox is not empty
+                    if (!string.IsNullOrWhiteSpace(txtpasswordadmin.Text))
+                    {
+                        query += ", password=@password";
+                    }
 
-                dataGridView1.AutoGenerateColumns = true;
-                dataGridView1.DataSource = dt;
+                    query += " WHERE user_id=@id";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@fname", txtfirstnameadmin.Text.Trim());
+                    cmd.Parameters.AddWithValue("@lname", txtlastnameadmin.Text.Trim());
+                    cmd.Parameters.AddWithValue("@email", txtboxemailadmin.Text.Trim());
+                    cmd.Parameters.AddWithValue("@role", cmbroleadmin.Text);
+                    cmd.Parameters.AddWithValue("@id", selectedUserId);
+
+                    if (!string.IsNullOrWhiteSpace(txtpasswordadmin.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@password", txtpasswordadmin.Text.Trim());
+                    }
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("User updated successfully!");
+
+                    ClearFields();
+                    LoadUsers();
+                    selectedUserId = -1;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void AdminUser_Load(object sender, EventArgs e)
+        {
+            LoadUsers();
+        }
+
+        private void btndelete_Click(object sender, EventArgs e)
+        {
+            if (selectedUserId == -1)
+            {
+                MessageBox.Show("Please select a user to delete.");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to delete this user?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result != DialogResult.Yes) return;
+
+            string connectionString = ConfigurationManager
+                .ConnectionStrings["CHSInventoryDB"].ConnectionString;
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string query = "DELETE FROM users WHERE user_id=@id"; // <-- FIXED
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@id", selectedUserId);
+
+                    cmd.ExecuteNonQuery();
+
+                  
+
+                    ClearFields();
+                    LoadUsers();
+                    selectedUserId = -1;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }
+
+
 }

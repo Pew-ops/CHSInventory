@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CHSInventory.Nurse
 {
-    public partial class NurseInventory : UserControl
+    public partial class pnlmedicine : UserControl
     {
-        public NurseInventory()
+        public pnlmedicine()
         {
             InitializeComponent();
         }

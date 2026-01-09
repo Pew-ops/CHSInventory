@@ -57,6 +57,9 @@
     <Reference Include="MySql.Data, Version=9.5.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.9.5.0\lib\net462\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -101,11 +104,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.cs">
+    <Compile Include="Admin2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin.Designer.cs">
-      <DependentUpon>Admin.cs</DependentUpon>
+    <Compile Include="Admin2.Designer.cs">
+      <DependentUpon>Admin2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminPatient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminPatient.Designer.cs">
+      <DependentUpon>AdminPatient.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Admin1.cs">
       <SubType>Form</SubType>
@@ -125,12 +134,6 @@
     <Compile Include="Admin\AdminInventory.Designer.cs">
       <DependentUpon>AdminInventory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AdminPatient.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Admin\AdminPatient.Designer.cs">
-      <DependentUpon>AdminPatient.cs</DependentUpon>
-    </Compile>
     <Compile Include="Admin\AdminStock.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -143,6 +146,8 @@
     <Compile Include="Admin\AdminUser.Designer.cs">
       <DependentUpon>AdminUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\User1.cs" />
+    <Compile Include="Admin\UserFactory.cs" />
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +159,12 @@
     </Compile>
     <Compile Include="Nurse\NursePatient.Designer.cs">
       <DependentUpon>NursePatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nurse\NursePatientsRecords.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Nurse\NursePatientsRecords.Designer.cs">
+      <DependentUpon>NursePatientsRecords.cs</DependentUpon>
     </Compile>
     <Compile Include="Nurse\Nurses.cs">
       <SubType>Form</SubType>
@@ -173,17 +184,17 @@
     <Compile Include="Nurse\NurseInventory.Designer.cs">
       <DependentUpon>NurseInventory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Nurse\NurseReceive.cs">
+    <Compile Include="Nurse\NurseStock1.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Nurse\NurseReceive.Designer.cs">
-      <DependentUpon>NurseReceive.cs</DependentUpon>
+    <Compile Include="Nurse\NurseStock1.Designer.cs">
+      <DependentUpon>NurseStock1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Nurse\NurseWastage.cs">
+    <Compile Include="STA\Stareceive.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Nurse\NurseWastage.Designer.cs">
-      <DependentUpon>NurseWastage.cs</DependentUpon>
+    <Compile Include="STA\Stareceive.Designer.cs">
+      <DependentUpon>Stareceive.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,8 +204,14 @@
     <Compile Include="STA\Sta.Designer.cs">
       <DependentUpon>Sta.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Admin.resx">
-      <DependentUpon>Admin.cs</DependentUpon>
+    <Compile Include="STA\Stareceive1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="STA\Stareceive1.Designer.cs">
+      <DependentUpon>Stareceive1.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Admin2.resx">
+      <DependentUpon>Admin2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Admin1.resx">
       <DependentUpon>Admin1.cs</DependentUpon>
@@ -204,9 +221,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\AdminInventory.resx">
       <DependentUpon>AdminInventory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Admin\AdminPatient.resx">
-      <DependentUpon>AdminPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\AdminStock.resx">
       <DependentUpon>AdminStock.cs</DependentUpon>
@@ -220,6 +234,9 @@
     <EmbeddedResource Include="Nurse\NursePatient.resx">
       <DependentUpon>NursePatient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Nurse\NursePatientsRecords.resx">
+      <DependentUpon>NursePatientsRecords.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Nurse\Nurses.resx">
       <DependentUpon>Nurses.cs</DependentUpon>
     </EmbeddedResource>
@@ -229,11 +246,11 @@
     <EmbeddedResource Include="Nurse\NurseInventory.resx">
       <DependentUpon>NurseInventory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Nurse\NurseReceive.resx">
-      <DependentUpon>NurseReceive.cs</DependentUpon>
+    <EmbeddedResource Include="Nurse\NurseStock1.resx">
+      <DependentUpon>NurseStock1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Nurse\NurseWastage.resx">
-      <DependentUpon>NurseWastage.cs</DependentUpon>
+    <EmbeddedResource Include="STA\Stareceive.resx">
+      <DependentUpon>Stareceive.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -247,6 +264,9 @@
     </Compile>
     <EmbeddedResource Include="STA\Sta.resx">
       <DependentUpon>Sta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STA\Stareceive1.resx">
+      <DependentUpon>Stareceive1.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CHSInventory
 {
-    public partial class Admin : Form
+    public partial class Admin2 : Form
     {
-        public Admin()
+        public Admin2()
         {
             InitializeComponent();
         }
