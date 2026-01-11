@@ -83,9 +83,29 @@ namespace CHSInventory.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap drugs__1_ {
+            get {
+                object obj = ResourceManager.GetObject("drugs (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap expired__1_ {
             get {
                 object obj = ResourceManager.GetObject("expired (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap medical {
+            get {
+                object obj = ResourceManager.GetObject("medical", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

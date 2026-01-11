@@ -8,8 +8,8 @@ namespace CHSInventory.Nurse
 {
     public partial class NurseStock1 : UserControl
     {
-        string connectionString = ConfigurationManager
-            .ConnectionStrings["CHSInventoryDB"].ConnectionString;
+        string connectionString =
+            ConfigurationManager.ConnectionStrings["CHSInventoryDB"].ConnectionString;
 
         int selectedId = -1;
 
@@ -17,28 +17,38 @@ namespace CHSInventory.Nurse
         {
             InitializeComponent();
             dataGridViewmedicine.CellClick += dataGridViewmedicine_CellClick;
+            txtitemcode.Leave += Txtitemcode_Leave;
         }
 
         private void NurseStock1_Load(object sender, EventArgs e)
         {
-            LoadMedicineData();
+            // 👉 SHOW ONLY TODAY'S ADDED MEDICINE
+            LoadTodayMedicineData();
         }
 
-        // ================= LOAD DATA =================
-        private void LoadMedicineData()
+        // ================= LOAD TODAY ONLY =================
+      
+        private void LoadTodayMedicineData()
         {
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                MySqlDataAdapter da =
-                    new MySqlDataAdapter("SELECT * FROM medicine_receive", conn);
+                string query = @"SELECT *
+                         FROM medicine_receive
+                         WHERE DATE(delivery_date) = CURDATE()
+                         ORDER BY id DESC"; // use delivery_date instead of created_at
 
+                MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
                 dataGridViewmedicine.DataSource = dt;
-                dataGridViewmedicine.Columns["id"].Visible = false;
+
+                // Hide the ID column
+                if (dataGridViewmedicine.Columns.Contains("id"))
+                    dataGridViewmedicine.Columns["id"].Visible = false;
             }
         }
+
 
         // ================= CELL CLICK =================
         private void dataGridViewmedicine_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -65,121 +75,102 @@ namespace CHSInventory.Nurse
         }
 
         // ================= ADD =================
+        // ================= ADD =================
         private void btnadd_Click(object sender, EventArgs e)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            if (string.IsNullOrWhiteSpace(txtitemcode.Text) ||
+                string.IsNullOrWhiteSpace(txtitemname.Text))
             {
-                conn.Open();
-
-                MySqlCommand cmd =
-                    new MySqlCommand("sp_add_medicine_receive", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("p_item_code", txtitemcode.Text);
-                cmd.Parameters.AddWithValue("p_item_name", txtitemname.Text);
-                cmd.Parameters.AddWithValue("p_category", cmbcategories.Text);
-                cmd.Parameters.AddWithValue("p_dosage", txtdosage.Text);
-                cmd.Parameters.AddWithValue("p_unit_cost",
-                    Convert.ToDecimal(txtunitcost.Text));
-                cmd.Parameters.AddWithValue("p_quantity",
-                    Convert.ToInt32(txtquantity.Text));
-                cmd.Parameters.AddWithValue("p_expiration_date",
-                    datetimepickerexpiration.Value);
-                cmd.Parameters.AddWithValue("p_delivery_date",
-                    datetimepickerdelivery.Value);
-                cmd.Parameters.AddWithValue("p_status", txtstatus.Text);
-                cmd.Parameters.AddWithValue("p_batch_no", txtbatch.Text);
-                cmd.Parameters.AddWithValue("p_supplier", txtsupplier.Text);
-
-                cmd.ExecuteNonQuery();
-            }
-
-            LoadMedicineData();
-            ClearFields();
-        }
-
-        // ================= UPDATE =================
-        private void btnupdate_Click(object sender, EventArgs e)
-        {
-            if (selectedId == -1)
-            {
-                MessageBox.Show("Please select a record to update.");
+                MessageBox.Show("Item code and name are required.");
                 return;
             }
 
+            int addQuantity = Convert.ToInt32(txtquantity.Text);
+
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
 
-                string query = @"UPDATE medicine_receive SET
-                    item_code=@code,
-                    item_name=@name,
-                    category=@category,
-                    dosage=@dosage,
-                    unit_cost=@cost,
-                    quantity=@qty,
-                    expiration_date=@exp,
-                    delivery_date=@del,
-                    status=@status,
-                    batch_no=@batch,
-                    supplier=@supplier
-                    WHERE id=@id";
+                // ✅ Check if batch already exists for this item
+                string checkBatchQuery = @"SELECT id 
+                                   FROM medicine_receive
+                                   WHERE item_code=@code AND batch_no=@batch
+                                   LIMIT 1";
 
-                MySqlCommand cmd = new MySqlCommand(query, conn);
+                MySqlCommand checkBatchCmd = new MySqlCommand(checkBatchQuery, conn);
+                checkBatchCmd.Parameters.AddWithValue("@code", txtitemcode.Text);
+                checkBatchCmd.Parameters.AddWithValue("@batch", txtbatch.Text);
 
-                cmd.Parameters.AddWithValue("@code", txtitemcode.Text);
-                cmd.Parameters.AddWithValue("@name", txtitemname.Text);
-                cmd.Parameters.AddWithValue("@category", cmbcategories.Text);
-                cmd.Parameters.AddWithValue("@dosage", txtdosage.Text);
-                cmd.Parameters.AddWithValue("@cost",
-                    Convert.ToDecimal(txtunitcost.Text));
-                cmd.Parameters.AddWithValue("@qty",
-                    Convert.ToInt32(txtquantity.Text));
-                cmd.Parameters.AddWithValue("@exp",
-                    datetimepickerexpiration.Value);
-                cmd.Parameters.AddWithValue("@del",
-                    datetimepickerdelivery.Value);
-                cmd.Parameters.AddWithValue("@status", txtstatus.Text);
-                cmd.Parameters.AddWithValue("@batch", txtbatch.Text);
-                cmd.Parameters.AddWithValue("@supplier", txtsupplier.Text);
-                cmd.Parameters.AddWithValue("@id", selectedId);
+                object result = checkBatchCmd.ExecuteScalar();
 
-                cmd.ExecuteNonQuery();
+                if (result != null)
+                {
+                    // Batch exists -> update quantity for that batch
+                    int existingId = Convert.ToInt32(result);
+
+                    string updateQuery = @"UPDATE medicine_receive
+                                   SET quantity = quantity + @qty
+                                   WHERE id=@id";
+
+                    MySqlCommand updateCmd = new MySqlCommand(updateQuery, conn);
+                    updateCmd.Parameters.AddWithValue("@qty", addQuantity);
+                    updateCmd.Parameters.AddWithValue("@id", existingId);
+                    updateCmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Existing batch quantity updated!");
+                }
+                else
+                {
+                    // New batch -> insert new record
+                    MySqlCommand cmd = new MySqlCommand("sp_add_medicine_receive", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("p_item_code", txtitemcode.Text);
+                    cmd.Parameters.AddWithValue("p_item_name", txtitemname.Text);
+                    cmd.Parameters.AddWithValue("p_category", cmbcategories.Text);
+                    cmd.Parameters.AddWithValue("p_dosage", txtdosage.Text);
+                    cmd.Parameters.AddWithValue("p_unit_cost", Convert.ToDecimal(txtunitcost.Text));
+                    cmd.Parameters.AddWithValue("p_quantity", addQuantity);
+                    cmd.Parameters.AddWithValue("p_expiration_date", datetimepickerexpiration.Value);
+                    cmd.Parameters.AddWithValue("p_delivery_date", datetimepickerdelivery.Value); // use actual delivery date
+                    cmd.Parameters.AddWithValue("p_status", txtstatus.Text);
+                    cmd.Parameters.AddWithValue("p_batch_no", txtbatch.Text);
+                    cmd.Parameters.AddWithValue("p_supplier", txtsupplier.Text);
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("New batch added successfully!");
+                }
+
+                LoadTodayMedicineData();
+                ClearFields();
             }
-
-            MessageBox.Show("Medicine updated successfully!");
-            LoadMedicineData();
-            ClearFields();
         }
+
 
         // ================= DELETE =================
         private void btndelete_Click(object sender, EventArgs e)
         {
             if (selectedId == -1)
             {
-                MessageBox.Show("Please select a record to delete.");
+                MessageBox.Show("Select a record first.");
                 return;
             }
 
-            if (MessageBox.Show("Delete this medicine?",
-                "Confirm",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning) != DialogResult.Yes)
+            if (MessageBox.Show("Delete this medicine?", "Confirm",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
                 return;
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-
                 MySqlCommand cmd =
-                    new MySqlCommand(
-                        "DELETE FROM medicine_receive WHERE id=@id", conn);
+                    new MySqlCommand("DELETE FROM medicine_receive WHERE id=@id", conn);
                 cmd.Parameters.AddWithValue("@id", selectedId);
                 cmd.ExecuteNonQuery();
             }
 
-            MessageBox.Show("Medicine deleted.");
-            LoadMedicineData();
+            LoadTodayMedicineData();
             ClearFields();
         }
 
@@ -197,5 +188,48 @@ namespace CHSInventory.Nurse
             txtsupplier.Clear();
             selectedId = -1;
         }
+
+        // ================= AUTO FILL =================
+        private void Txtitemcode_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtitemcode.Text))
+                return;
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+
+                // Only get the latest batch for this item code
+                string queryLatest = @"
+            SELECT item_name, category, dosage, unit_cost, batch_no, quantity, expiration_date, delivery_date
+            FROM medicine_receive
+            WHERE item_code=@code
+            ORDER BY delivery_date DESC
+            LIMIT 1";
+
+                MySqlCommand cmd = new MySqlCommand(queryLatest, conn);
+                cmd.Parameters.AddWithValue("@code", txtitemcode.Text);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        txtitemname.Text = reader["item_name"].ToString();
+                        cmbcategories.Text = reader["category"].ToString();
+                        txtdosage.Text = reader["dosage"].ToString();
+                        txtunitcost.Text = reader["unit_cost"].ToString();
+                        txtbatch.Text = reader["batch_no"].ToString();
+                        txtquantity.Text = reader["quantity"].ToString();
+                        datetimepickerexpiration.Value = Convert.ToDateTime(reader["expiration_date"]);
+                        datetimepickerdelivery.Value = Convert.ToDateTime(reader["delivery_date"]);
+                    }
+                }
+
+                // ✅ Do NOT overwrite the grid here
+                // If you want to show all batches, call a separate button / method
+                // LoadAllBatchesForItem(txtitemcode.Text); // optional
+            }
+        }
+
     }
 }

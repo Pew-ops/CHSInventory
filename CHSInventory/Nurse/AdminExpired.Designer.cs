@@ -1,6 +1,6 @@
 ﻿namespace CHSInventory.Nurse
 {
-    partial class NursePatientsRecords
+    partial class AdminExpired
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.label9 = new System.Windows.Forms.Label();
-            this.datagridpatientsrecord = new System.Windows.Forms.DataGridView();
             this.txtsearch = new Guna.UI2.WinForms.Guna2TextBox();
+            this.datagridpatientsrecord = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.datagridpatientsrecord)).BeginInit();
             this.SuspendLayout();
             // 
@@ -38,22 +38,11 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(29, 33);
+            this.label9.Location = new System.Drawing.Point(25, 28);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(393, 65);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "Patient / Record";
-            // 
-            // datagridpatientsrecord
-            // 
-            this.datagridpatientsrecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagridpatientsrecord.Location = new System.Drawing.Point(135, 251);
-            this.datagridpatientsrecord.Name = "datagridpatientsrecord";
-            this.datagridpatientsrecord.RowHeadersWidth = 62;
-            this.datagridpatientsrecord.RowTemplate.Height = 28;
-            this.datagridpatientsrecord.Size = new System.Drawing.Size(1306, 591);
-            this.datagridpatientsrecord.TabIndex = 20;
-
+            this.label9.Size = new System.Drawing.Size(411, 65);
+            this.label9.TabIndex = 23;
+            this.label9.Text = "Expired/Disposal\r\n";
             // 
             // txtsearch
             // 
@@ -67,25 +56,35 @@
             this.txtsearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtsearch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtsearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtsearch.Location = new System.Drawing.Point(135, 186);
+            this.txtsearch.Location = new System.Drawing.Point(89, 156);
             this.txtsearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtsearch.Name = "txtsearch";
             this.txtsearch.PlaceholderForeColor = System.Drawing.Color.Gray;
             this.txtsearch.PlaceholderText = "School ID....";
             this.txtsearch.SelectedText = "";
             this.txtsearch.Size = new System.Drawing.Size(317, 46);
-            this.txtsearch.TabIndex = 22;
-            this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged);
+            this.txtsearch.TabIndex = 24;
             // 
-            // NursePatientsRecords
+            // datagridpatientsrecord
+            // 
+            this.datagridpatientsrecord.BackgroundColor = System.Drawing.Color.White;
+            this.datagridpatientsrecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagridpatientsrecord.Location = new System.Drawing.Point(89, 225);
+            this.datagridpatientsrecord.Name = "datagridpatientsrecord";
+            this.datagridpatientsrecord.RowHeadersWidth = 62;
+            this.datagridpatientsrecord.RowTemplate.Height = 28;
+            this.datagridpatientsrecord.Size = new System.Drawing.Size(1306, 524);
+            this.datagridpatientsrecord.TabIndex = 25;
+            // 
+            // AdminExpired
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.txtsearch);
             this.Controls.Add(this.datagridpatientsrecord);
+            this.Controls.Add(this.txtsearch);
             this.Controls.Add(this.label9);
-            this.Name = "NursePatientsRecords";
-            this.Size = new System.Drawing.Size(1587, 990);
+            this.Name = "AdminExpired";
+            this.Size = new System.Drawing.Size(1587, 977);
             ((System.ComponentModel.ISupportInitialize)(this.datagridpatientsrecord)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -95,7 +94,7 @@
         #endregion
 
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DataGridView datagridpatientsrecord;
         private Guna.UI2.WinForms.Guna2TextBox txtsearch;
+        private System.Windows.Forms.DataGridView datagridpatientsrecord;
     }
 }

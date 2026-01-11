@@ -56,7 +56,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2TextBox5 = new Guna.UI2.WinForms.Guna2TextBox();
             this.dataGridViewmedicine = new System.Windows.Forms.DataGridView();
             this.btnupdate = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
@@ -100,7 +99,7 @@
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Location = new System.Drawing.Point(20, 103);
+            this.panel1.Location = new System.Drawing.Point(59, 103);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(489, 833);
             this.panel1.TabIndex = 26;
@@ -187,7 +186,7 @@
             this.btnadd.FillColor = System.Drawing.Color.Firebrick;
             this.btnadd.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.btnadd.ForeColor = System.Drawing.Color.White;
-            this.btnadd.Location = new System.Drawing.Point(206, 740);
+            this.btnadd.Location = new System.Drawing.Point(206, 757);
             this.btnadd.Name = "btnadd";
             this.btnadd.Size = new System.Drawing.Size(165, 60);
             this.btnadd.TabIndex = 45;
@@ -228,7 +227,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(62, 287);
+            this.label3.Location = new System.Drawing.Point(62, 283);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 28);
             this.label3.TabIndex = 40;
@@ -283,7 +282,6 @@
             this.txtitemcode.SelectedText = "";
             this.txtitemcode.Size = new System.Drawing.Size(286, 40);
             this.txtitemcode.TabIndex = 40;
-         
             // 
             // label1
             // 
@@ -429,7 +427,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(50, 342);
+            this.label6.Location = new System.Drawing.Point(50, 339);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 28);
             this.label6.TabIndex = 25;
@@ -439,7 +437,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(52, 397);
+            this.label7.Location = new System.Drawing.Point(52, 390);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(92, 28);
             this.label7.TabIndex = 26;
@@ -448,7 +446,6 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.guna2Button1);
-            this.panel2.Controls.Add(this.guna2TextBox5);
             this.panel2.Controls.Add(this.dataGridViewmedicine);
             this.panel2.Controls.Add(this.btnupdate);
             this.panel2.Location = new System.Drawing.Point(565, 103);
@@ -466,31 +463,11 @@
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(460, 739);
+            this.guna2Button1.Location = new System.Drawing.Point(449, 757);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(156, 61);
             this.guna2Button1.TabIndex = 47;
             this.guna2Button1.Text = "Delete";
-            // 
-            // guna2TextBox5
-            // 
-            this.guna2TextBox5.BorderRadius = 10;
-            this.guna2TextBox5.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox5.DefaultText = "";
-            this.guna2TextBox5.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox5.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox5.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox5.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox5.Location = new System.Drawing.Point(27, 26);
-            this.guna2TextBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.guna2TextBox5.Name = "guna2TextBox5";
-            this.guna2TextBox5.PlaceholderText = "";
-            this.guna2TextBox5.SelectedText = "";
-            this.guna2TextBox5.Size = new System.Drawing.Size(432, 40);
-            this.guna2TextBox5.TabIndex = 38;
             // 
             // dataGridViewmedicine
             // 
@@ -499,7 +476,7 @@
             this.dataGridViewmedicine.Name = "dataGridViewmedicine";
             this.dataGridViewmedicine.RowHeadersWidth = 62;
             this.dataGridViewmedicine.RowTemplate.Height = 28;
-            this.dataGridViewmedicine.Size = new System.Drawing.Size(944, 607);
+            this.dataGridViewmedicine.Size = new System.Drawing.Size(944, 638);
             this.dataGridViewmedicine.TabIndex = 0;
             // 
             // btnupdate
@@ -512,7 +489,7 @@
             this.btnupdate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnupdate.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.btnupdate.ForeColor = System.Drawing.Color.White;
-            this.btnupdate.Location = new System.Drawing.Point(716, 740);
+            this.btnupdate.Location = new System.Drawing.Point(728, 756);
             this.btnupdate.Name = "btnupdate";
             this.btnupdate.Size = new System.Drawing.Size(157, 61);
             this.btnupdate.TabIndex = 46;
@@ -566,7 +543,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel2;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox5;
         private System.Windows.Forms.DataGridView dataGridViewmedicine;
         private Guna.UI2.WinForms.Guna2Button btnupdate;
     }

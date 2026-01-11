@@ -28,29 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label9 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblstock = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblpatients = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblnearlyexpired = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lbltotalmedicine = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.label9 = new System.Windows.Forms.Label();
+            this.datagridviewadmin = new System.Windows.Forms.DataGridView();
+            this.txtsearch = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -60,50 +58,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridviewadmin)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(36, 98);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(182, 28);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "Admin Dashboard";
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.dataGridView1);
-            this.panel6.Controls.Add(this.label10);
-            this.panel6.Location = new System.Drawing.Point(38, 403);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1368, 536);
-            this.panel6.TabIndex = 4;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(64, 84);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1252, 429);
-            this.dataGridView1.TabIndex = 4;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(31, 28);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(172, 28);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Recent Activities";
             // 
             // panel1
             // 
@@ -112,7 +68,7 @@
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(41, 149);
+            this.panel1.Location = new System.Drawing.Point(131, 147);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1368, 287);
             this.panel1.TabIndex = 10;
@@ -120,7 +76,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Brown;
-            this.panel5.Controls.Add(this.label6);
+            this.panel5.Controls.Add(this.lblstock);
             this.panel5.Controls.Add(this.label7);
             this.panel5.Controls.Add(this.pictureBox4);
             this.panel5.Location = new System.Drawing.Point(1040, 57);
@@ -128,32 +84,33 @@
             this.panel5.Size = new System.Drawing.Size(297, 180);
             this.panel5.TabIndex = 5;
             // 
-            // label6
+            // lblstock
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(176, 71);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 38);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "1000";
+            this.lblstock.AutoSize = true;
+            this.lblstock.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblstock.ForeColor = System.Drawing.Color.White;
+            this.lblstock.Location = new System.Drawing.Point(176, 71);
+            this.lblstock.Name = "lblstock";
+            this.lblstock.Size = new System.Drawing.Size(76, 38);
+            this.lblstock.TabIndex = 10;
+            this.lblstock.Text = "1000";
+            this.lblstock.Click += new System.EventHandler(this.lblstock_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(152, 109);
+            this.label7.Location = new System.Drawing.Point(165, 109);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(132, 21);
+            this.label7.Size = new System.Drawing.Size(87, 21);
             this.label7.TabIndex = 2;
-            this.label7.Text = "Wastage Counts";
+            this.label7.Text = "Low Stock";
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::CHSInventory.Properties.Resources.basket;
-            this.pictureBox4.Location = new System.Drawing.Point(12, 53);
+            this.pictureBox4.Image = global::CHSInventory.Properties.Resources.drugs__1_;
+            this.pictureBox4.Location = new System.Drawing.Point(36, 62);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(134, 88);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -163,7 +120,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Brown;
-            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.lblpatients);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Location = new System.Drawing.Point(702, 57);
@@ -171,16 +128,17 @@
             this.panel4.Size = new System.Drawing.Size(312, 180);
             this.panel4.TabIndex = 4;
             // 
-            // label4
+            // lblpatients
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(185, 71);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 38);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "1000";
+            this.lblpatients.AutoSize = true;
+            this.lblpatients.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblpatients.ForeColor = System.Drawing.Color.White;
+            this.lblpatients.Location = new System.Drawing.Point(185, 71);
+            this.lblpatients.Name = "lblpatients";
+            this.lblpatients.Size = new System.Drawing.Size(76, 38);
+            this.lblpatients.TabIndex = 4;
+            this.lblpatients.Text = "1000";
+            this.lblpatients.Click += new System.EventHandler(this.lblpatients_Click);
             // 
             // label5
             // 
@@ -206,7 +164,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Brown;
-            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.lblnearlyexpired);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Location = new System.Drawing.Point(364, 57);
@@ -214,23 +172,24 @@
             this.panel3.Size = new System.Drawing.Size(309, 180);
             this.panel3.TabIndex = 3;
             // 
-            // label1
+            // lblnearlyexpired
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(187, 71);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 38);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "1000";
+            this.lblnearlyexpired.AutoSize = true;
+            this.lblnearlyexpired.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnearlyexpired.ForeColor = System.Drawing.Color.White;
+            this.lblnearlyexpired.Location = new System.Drawing.Point(172, 71);
+            this.lblnearlyexpired.Name = "lblnearlyexpired";
+            this.lblnearlyexpired.Size = new System.Drawing.Size(76, 38);
+            this.lblnearlyexpired.TabIndex = 3;
+            this.lblnearlyexpired.Text = "1000";
+            this.lblnearlyexpired.Click += new System.EventHandler(this.lblnearlyexpired_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(158, 109);
+            this.label3.Location = new System.Drawing.Point(144, 109);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(142, 21);
             this.label3.TabIndex = 2;
@@ -250,7 +209,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Brown;
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.lbltotalmedicine);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Location = new System.Drawing.Point(33, 57);
             this.panel2.Name = "panel2";
@@ -264,20 +223,21 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(152, 109);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 21);
+            this.label2.Size = new System.Drawing.Size(94, 21);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Total Medicine";
+            this.label2.Text = "Total Stock";
             // 
-            // label8
+            // lbltotalmedicine
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(174, 71);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(76, 38);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "1000";
+            this.lbltotalmedicine.AutoSize = true;
+            this.lbltotalmedicine.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltotalmedicine.ForeColor = System.Drawing.Color.White;
+            this.lbltotalmedicine.Location = new System.Drawing.Point(166, 71);
+            this.lbltotalmedicine.Name = "lbltotalmedicine";
+            this.lbltotalmedicine.Size = new System.Drawing.Size(76, 38);
+            this.lbltotalmedicine.TabIndex = 1;
+            this.lbltotalmedicine.Text = "1000";
+            this.lbltotalmedicine.Click += new System.EventHandler(this.lbltotalmedicine_Click);
             // 
             // pictureBox1
             // 
@@ -289,18 +249,72 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(39, 58);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(273, 65);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Dashboard";
+            // 
+            // datagridviewadmin
+            // 
+            this.datagridviewadmin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagridviewadmin.Location = new System.Drawing.Point(164, 505);
+            this.datagridviewadmin.Name = "datagridviewadmin";
+            this.datagridviewadmin.RowHeadersWidth = 62;
+            this.datagridviewadmin.RowTemplate.Height = 28;
+            this.datagridviewadmin.Size = new System.Drawing.Size(1320, 410);
+            this.datagridviewadmin.TabIndex = 23;
+            // 
+            // txtsearch
+            // 
+            this.txtsearch.BorderRadius = 15;
+            this.txtsearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtsearch.DefaultText = "";
+            this.txtsearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtsearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtsearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtsearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtsearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtsearch.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtsearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtsearch.Location = new System.Drawing.Point(164, 451);
+            this.txtsearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtsearch.Name = "txtsearch";
+            this.txtsearch.PlaceholderText = "Search Medicine...";
+            this.txtsearch.SelectedText = "";
+            this.txtsearch.Size = new System.Drawing.Size(369, 46);
+            this.txtsearch.TabIndex = 24;
+            this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged);
+            // 
+            // guna2ContextMenuStrip1
+            // 
+            this.guna2ContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
+            this.guna2ContextMenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.guna2ContextMenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.ColorTable = null;
+            this.guna2ContextMenuStrip1.RenderStyle.RoundedEdges = true;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // Admindashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.txtsearch);
+            this.Controls.Add(this.datagridviewadmin);
             this.Controls.Add(this.label9);
+            this.Controls.Add(this.panel1);
             this.Name = "Admindashboard";
-            this.Size = new System.Drawing.Size(1738, 1151);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Size = new System.Drawing.Size(1609, 1033);
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -314,32 +328,33 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridviewadmin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblstock;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblpatients;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblnearlyexpired;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbltotalmedicine;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridView datagridviewadmin;
+        private Guna.UI2.WinForms.Guna2TextBox txtsearch;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
     }
 }

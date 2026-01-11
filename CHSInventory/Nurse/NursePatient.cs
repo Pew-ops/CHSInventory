@@ -151,14 +151,18 @@ namespace CHSInventory.Nurse
             }
 
             string connStr = ConfigurationManager.ConnectionStrings["CHSInventoryDB"].ConnectionString;
+
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 conn.Open();
 
-                // Insert patient info first
+                // 1️⃣ Insert patient dispense record
                 MySqlCommand cmdPatient = new MySqlCommand(
-                    "INSERT INTO medicine_dispense(student_id, student_name, program, complain, nurse_assigned) " +
-                    "VALUES(@id,@name,@prog,@comp,@nurse); SELECT LAST_INSERT_ID();", conn);
+                    @"INSERT INTO medicine_dispense
+              (student_id, student_name, program, complain, nurse_assigned)
+              VALUES (@id,@name,@prog,@comp,@nurse);
+              SELECT LAST_INSERT_ID();", conn);
+
                 cmdPatient.Parameters.AddWithValue("@id", txtId.Text);
                 cmdPatient.Parameters.AddWithValue("@name", txtfullname.Text);
                 cmdPatient.Parameters.AddWithValue("@prog", cmbprogram.Text);
@@ -167,19 +171,23 @@ namespace CHSInventory.Nurse
 
                 int dispenseId = Convert.ToInt32(cmdPatient.ExecuteScalar());
 
-                // Loop through selected medicines
+                // 2️⃣ Insert medicines + deduct stock
                 foreach (var med in checkedMedicines)
                 {
-                    // Insert into medicine_dispense_items
                     MySqlCommand cmdItem = new MySqlCommand(
-                        "INSERT INTO medicine_dispense_items(dispense_id, item_name, quantity) VALUES(@dispenseId,@med,1);", conn);
+                        @"INSERT INTO medicine_dispense_items
+                  (dispense_id, item_name, quantity)
+                  VALUES (@dispenseId,@med,1);", conn);
+
                     cmdItem.Parameters.AddWithValue("@dispenseId", dispenseId);
                     cmdItem.Parameters.AddWithValue("@med", med);
                     cmdItem.ExecuteNonQuery();
 
-                    // Deduct 1 from stock
                     MySqlCommand cmdStock = new MySqlCommand(
-                        "UPDATE medicine_receive SET quantity = quantity - 1 WHERE item_name=@med AND quantity>0;", conn);
+                        @"UPDATE medicine_receive
+                  SET quantity = quantity - 1
+                  WHERE item_name=@med AND quantity > 0;", conn);
+
                     cmdStock.Parameters.AddWithValue("@med", med);
                     cmdStock.ExecuteNonQuery();
                 }
@@ -187,7 +195,7 @@ namespace CHSInventory.Nurse
 
             MessageBox.Show("Medicines dispensed successfully!");
 
-            // Clear form fields and selections
+            // 3️⃣ Clear form
             txtId.Clear();
             txtfullname.Clear();
             cmbprogram.SelectedIndex = -1;
@@ -195,8 +203,8 @@ namespace CHSInventory.Nurse
             cmbnurseassign.SelectedIndex = -1;
             checkedMedicines.Clear();
 
-            LoadMedicines();           // Refresh medicine checklist
-            LoadDispensedPatients();   // Refresh datagrid with new entries
+            LoadMedicines();
+            LoadDispensedPatients(); // ✅ GRID NOW UPDATES
         }
 
         private void LoadDispensedPatients()

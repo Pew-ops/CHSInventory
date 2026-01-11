@@ -41,5 +41,10 @@ namespace CHSInventory
             _stareceive1.BringToFront();
             _stareceive1.Show(); // Also ensure the Form is visible
         }
+
+        private void btnexitsta_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -42,7 +42,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.guna2TextBox7 = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnadd = new Guna.UI2.WinForms.Guna2Button();
-            this.btndelete = new Guna.UI2.WinForms.Guna2Button();
             this.btnupdate = new Guna.UI2.WinForms.Guna2Button();
             this.cmbprogram = new System.Windows.Forms.ComboBox();
             this.cmbnurseassign = new System.Windows.Forms.ComboBox();
@@ -99,9 +98,9 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(69, 482);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 32);
+            this.label4.Size = new System.Drawing.Size(121, 32);
             this.label4.TabIndex = 10;
-            this.label4.Text = "Complaint:";
+            this.label4.Text = "Complain:";
             // 
             // label5
             // 
@@ -235,28 +234,12 @@
             this.btnadd.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnadd.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnadd.ForeColor = System.Drawing.Color.White;
-            this.btnadd.Location = new System.Drawing.Point(284, 865);
+            this.btnadd.Location = new System.Drawing.Point(148, 831);
             this.btnadd.Name = "btnadd";
             this.btnadd.Size = new System.Drawing.Size(147, 55);
             this.btnadd.TabIndex = 22;
             this.btnadd.Text = "ADD";
             this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
-            // 
-            // btndelete
-            // 
-            this.btndelete.BorderRadius = 15;
-            this.btndelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btndelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btndelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btndelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btndelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btndelete.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btndelete.ForeColor = System.Drawing.Color.White;
-            this.btndelete.Location = new System.Drawing.Point(1379, 865);
-            this.btndelete.Name = "btndelete";
-            this.btndelete.Size = new System.Drawing.Size(147, 55);
-            this.btndelete.TabIndex = 23;
-            this.btndelete.Text = "DELETE";
             // 
             // btnupdate
             // 
@@ -268,7 +251,7 @@
             this.btnupdate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnupdate.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.btnupdate.ForeColor = System.Drawing.Color.White;
-            this.btnupdate.Location = new System.Drawing.Point(1188, 865);
+            this.btnupdate.Location = new System.Drawing.Point(344, 831);
             this.btnupdate.Name = "btnupdate";
             this.btnupdate.Size = new System.Drawing.Size(147, 55);
             this.btnupdate.TabIndex = 24;
@@ -357,7 +340,6 @@
             this.Controls.Add(this.cmbnurseassign);
             this.Controls.Add(this.cmbprogram);
             this.Controls.Add(this.btnupdate);
-            this.Controls.Add(this.btndelete);
             this.Controls.Add(this.btnadd);
             this.Controls.Add(this.guna2TextBox7);
             this.Controls.Add(this.label7);
@@ -395,7 +377,6 @@
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox7;
         private Guna.UI2.WinForms.Guna2Button btnadd;
-        private Guna.UI2.WinForms.Guna2Button btndelete;
         private Guna.UI2.WinForms.Guna2Button btnupdate;
         private System.Windows.Forms.ComboBox cmbprogram;
         private System.Windows.Forms.ComboBox cmbnurseassign;

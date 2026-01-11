@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace CHSInventory.Nurse
 {
-    public partial class pnlmedicine : UserControl
+    public partial class AdminExpired : UserControl
     {
-        public pnlmedicine()
+        public AdminExpired()
         {
             InitializeComponent();
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

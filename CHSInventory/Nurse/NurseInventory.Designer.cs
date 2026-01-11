@@ -31,21 +31,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlwastage = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pnlpatients = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pnlexpiredmedicine = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.pnlwastage.SuspendLayout();
@@ -92,6 +92,17 @@
             this.pnlwastage.Size = new System.Drawing.Size(297, 180);
             this.pnlwastage.TabIndex = 5;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(176, 71);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 38);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "1000";
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -124,6 +135,17 @@
             this.pnlpatients.Size = new System.Drawing.Size(312, 180);
             this.pnlpatients.TabIndex = 4;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(185, 71);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 38);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "1000";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -155,6 +177,17 @@
             this.pnlexpiredmedicine.Name = "pnlexpiredmedicine";
             this.pnlexpiredmedicine.Size = new System.Drawing.Size(309, 180);
             this.pnlexpiredmedicine.TabIndex = 3;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(187, 71);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(76, 38);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "1000";
             // 
             // label3
             // 
@@ -209,6 +242,7 @@
             this.label9.Size = new System.Drawing.Size(76, 38);
             this.label9.TabIndex = 1;
             this.label9.Text = "1000";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // pictureBox1
             // 
@@ -220,41 +254,9 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(187, 71);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(76, 38);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "1000";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(185, 71);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 38);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "1000";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(176, 71);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 38);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "1000";
-            // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(86, 439);
             this.dataGridView1.Name = "dataGridView1";

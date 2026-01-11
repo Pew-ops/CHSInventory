@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CHSInventory
+namespace CHSInventory.Admin
 {
-    public partial class AdminStock : UserControl
+    public partial class AdminExpired : UserControl
     {
-        public AdminStock()
+        public AdminExpired()
         {
             InitializeComponent();
         }
