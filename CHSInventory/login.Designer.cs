@@ -39,6 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnlogin1 = new Guna.UI2.WinForms.Guna2Button();
+            this.cbShow = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -135,6 +136,7 @@
             this.txtpassword1.Location = new System.Drawing.Point(637, 325);
             this.txtpassword1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtpassword1.Name = "txtpassword1";
+            this.txtpassword1.PasswordChar = '*';
             this.txtpassword1.PlaceholderText = "";
             this.txtpassword1.SelectedText = "";
             this.txtpassword1.Size = new System.Drawing.Size(497, 60);
@@ -201,12 +203,24 @@
             this.btnlogin1.Text = "LOGIN";
             this.btnlogin1.Click += new System.EventHandler(this.btnlogin1_Click);
             // 
+            // cbShow
+            // 
+            this.cbShow.AutoSize = true;
+            this.cbShow.Location = new System.Drawing.Point(986, 402);
+            this.cbShow.Name = "cbShow";
+            this.cbShow.Size = new System.Drawing.Size(148, 24);
+            this.cbShow.TabIndex = 18;
+            this.cbShow.Text = "Show Password";
+            this.cbShow.UseVisualStyleBackColor = true;
+            this.cbShow.CheckedChanged += new System.EventHandler(this.cbShow_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1167, 692);
+            this.Controls.Add(this.cbShow);
             this.Controls.Add(this.btnlogin1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
@@ -241,6 +255,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2Button btnlogin1;
+        private System.Windows.Forms.CheckBox cbShow;
     }
 }
 

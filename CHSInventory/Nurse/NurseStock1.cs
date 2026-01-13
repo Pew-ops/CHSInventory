@@ -18,24 +18,27 @@ namespace CHSInventory.Nurse
             InitializeComponent();
             dataGridViewmedicine.CellClick += dataGridViewmedicine_CellClick;
             txtitemcode.Leave += Txtitemcode_Leave;
+            this.Load += NurseStock1_Load;
         }
 
+        // ================= LOAD =================
         private void NurseStock1_Load(object sender, EventArgs e)
         {
-            // 👉 SHOW ONLY TODAY'S ADDED MEDICINE
             LoadTodayMedicineData();
         }
 
         // ================= LOAD TODAY ONLY =================
-      
         private void LoadTodayMedicineData()
         {
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                string query = @"SELECT *
-                         FROM medicine_receive
-                         WHERE DATE(delivery_date) = CURDATE()
-                         ORDER BY id DESC"; // use delivery_date instead of created_at
+                string query = @"
+                    SELECT id, item_code, item_name, category, dosage,
+                           batch_no, quantity, unit_cost,
+                           expiration_date, delivery_date, supplier, status
+                    FROM medicine_receive
+                    WHERE DATE(delivery_date) = CURDATE()
+                    ORDER BY id DESC";
 
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
@@ -43,12 +46,13 @@ namespace CHSInventory.Nurse
 
                 dataGridViewmedicine.DataSource = dt;
 
-                // Hide the ID column
                 if (dataGridViewmedicine.Columns.Contains("id"))
                     dataGridViewmedicine.Columns["id"].Visible = false;
+
+                dataGridViewmedicine.AutoSizeColumnsMode =
+                    DataGridViewAutoSizeColumnsMode.Fill;
             }
         }
-
 
         // ================= CELL CLICK =================
         private void dataGridViewmedicine_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -75,76 +79,101 @@ namespace CHSInventory.Nurse
         }
 
         // ================= ADD =================
-        // ================= ADD =================
         private void btnadd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtitemcode.Text) ||
-                string.IsNullOrWhiteSpace(txtitemname.Text))
+                string.IsNullOrWhiteSpace(txtitemname.Text) ||
+                string.IsNullOrWhiteSpace(txtbatch.Text))
             {
-                MessageBox.Show("Item code and name are required.");
+                MessageBox.Show("Item code, name, and batch are required.");
                 return;
             }
 
-            int addQuantity = Convert.ToInt32(txtquantity.Text);
+            if (!int.TryParse(txtquantity.Text, out int addQuantity) || addQuantity <= 0)
+            {
+                MessageBox.Show("Invalid quantity.");
+                return;
+            }
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
+                MySqlTransaction trans = conn.BeginTransaction();
 
-                // ✅ Check if batch already exists for this item
-                string checkBatchQuery = @"SELECT id 
-                                   FROM medicine_receive
-                                   WHERE item_code=@code AND batch_no=@batch
-                                   LIMIT 1";
-
-                MySqlCommand checkBatchCmd = new MySqlCommand(checkBatchQuery, conn);
-                checkBatchCmd.Parameters.AddWithValue("@code", txtitemcode.Text);
-                checkBatchCmd.Parameters.AddWithValue("@batch", txtbatch.Text);
-
-                object result = checkBatchCmd.ExecuteScalar();
-
-                if (result != null)
+                try
                 {
-                    // Batch exists -> update quantity for that batch
-                    int existingId = Convert.ToInt32(result);
+                    // 🔍 CHECK SAME ITEM + SAME BATCH + SAME EXPIRATION
+                    string checkQuery = @"
+                SELECT id
+                FROM medicine_receive
+                WHERE item_code = @code
+                  AND batch_no = @batch
+                  AND expiration_date = @exp
+                LIMIT 1";
 
-                    string updateQuery = @"UPDATE medicine_receive
-                                   SET quantity = quantity + @qty
-                                   WHERE id=@id";
+                    MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn, trans);
+                    checkCmd.Parameters.AddWithValue("@code", txtitemcode.Text.Trim());
+                    checkCmd.Parameters.AddWithValue("@batch", txtbatch.Text.Trim());
+                    checkCmd.Parameters.AddWithValue("@exp",
+                        datetimepickerexpiration.Value.Date);
 
-                    MySqlCommand updateCmd = new MySqlCommand(updateQuery, conn);
-                    updateCmd.Parameters.AddWithValue("@qty", addQuantity);
-                    updateCmd.Parameters.AddWithValue("@id", existingId);
-                    updateCmd.ExecuteNonQuery();
+                    object existingId = checkCmd.ExecuteScalar();
 
-                    MessageBox.Show("Existing batch quantity updated!");
+                    if (existingId != null)
+                    {
+                        // ✅ SAME BATCH → ADD ONLY TO THAT BATCH
+                        string updateQuery = @"
+                    UPDATE medicine_receive
+                    SET quantity = quantity + @qty
+                    WHERE id = @id";
+
+                        MySqlCommand updateCmd =
+                            new MySqlCommand(updateQuery, conn, trans);
+
+                        updateCmd.Parameters.AddWithValue("@qty", addQuantity);
+                        updateCmd.Parameters.AddWithValue("@id",
+                            Convert.ToInt32(existingId));
+
+                        updateCmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        // ✅ DIFFERENT BATCH OR DATE → INSERT NEW ROW
+                        MySqlCommand insertCmd =
+                            new MySqlCommand("sp_add_medicine_receive", conn, trans);
+
+                        insertCmd.CommandType = CommandType.StoredProcedure;
+
+                        insertCmd.Parameters.AddWithValue("p_item_code", txtitemcode.Text.Trim());
+                        insertCmd.Parameters.AddWithValue("p_item_name", txtitemname.Text.Trim());
+                        insertCmd.Parameters.AddWithValue("p_category", cmbcategories.Text);
+                        insertCmd.Parameters.AddWithValue("p_dosage", txtdosage.Text.Trim());
+                        insertCmd.Parameters.AddWithValue("p_unit_cost",
+                            Convert.ToDecimal(txtunitcost.Text));
+                        insertCmd.Parameters.AddWithValue("p_quantity", addQuantity);
+                        insertCmd.Parameters.AddWithValue("p_expiration_date",
+                            datetimepickerexpiration.Value.Date);
+                        insertCmd.Parameters.AddWithValue("p_delivery_date",
+                            datetimepickerdelivery.Value.Date);
+                        insertCmd.Parameters.AddWithValue("p_status", txtstatus.Text.Trim());
+                        insertCmd.Parameters.AddWithValue("p_batch_no", txtbatch.Text.Trim());
+                        insertCmd.Parameters.AddWithValue("p_supplier", txtsupplier.Text.Trim());
+
+                        insertCmd.ExecuteNonQuery();
+                    }
+
+                    trans.Commit();
+                    MessageBox.Show("Stock recorded successfully!");
                 }
-                else
+                catch (Exception ex)
                 {
-                    // New batch -> insert new record
-                    MySqlCommand cmd = new MySqlCommand("sp_add_medicine_receive", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue("p_item_code", txtitemcode.Text);
-                    cmd.Parameters.AddWithValue("p_item_name", txtitemname.Text);
-                    cmd.Parameters.AddWithValue("p_category", cmbcategories.Text);
-                    cmd.Parameters.AddWithValue("p_dosage", txtdosage.Text);
-                    cmd.Parameters.AddWithValue("p_unit_cost", Convert.ToDecimal(txtunitcost.Text));
-                    cmd.Parameters.AddWithValue("p_quantity", addQuantity);
-                    cmd.Parameters.AddWithValue("p_expiration_date", datetimepickerexpiration.Value);
-                    cmd.Parameters.AddWithValue("p_delivery_date", datetimepickerdelivery.Value); // use actual delivery date
-                    cmd.Parameters.AddWithValue("p_status", txtstatus.Text);
-                    cmd.Parameters.AddWithValue("p_batch_no", txtbatch.Text);
-                    cmd.Parameters.AddWithValue("p_supplier", txtsupplier.Text);
-
-                    cmd.ExecuteNonQuery();
-
-                    MessageBox.Show("New batch added successfully!");
+                    trans.Rollback();
+                    MessageBox.Show("Error: " + ex.Message);
                 }
-
-                LoadTodayMedicineData();
-                ClearFields();
             }
+
+            LoadTodayMedicineData();
+            ClearFields();
         }
 
 
@@ -189,7 +218,7 @@ namespace CHSInventory.Nurse
             selectedId = -1;
         }
 
-        // ================= AUTO FILL =================
+        // ================= AUTO FILL (LATEST BATCH) =================
         private void Txtitemcode_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtitemcode.Text))
@@ -199,15 +228,14 @@ namespace CHSInventory.Nurse
             {
                 conn.Open();
 
-                // Only get the latest batch for this item code
-                string queryLatest = @"
-            SELECT item_name, category, dosage, unit_cost, batch_no, quantity, expiration_date, delivery_date
-            FROM medicine_receive
-            WHERE item_code=@code
-            ORDER BY delivery_date DESC
-            LIMIT 1";
+                string query = @"
+                    SELECT item_name, category, dosage, unit_cost
+                    FROM medicine_receive
+                    WHERE item_code=@code
+                    ORDER BY delivery_date DESC
+                    LIMIT 1";
 
-                MySqlCommand cmd = new MySqlCommand(queryLatest, conn);
+                MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@code", txtitemcode.Text);
 
                 using (MySqlDataReader reader = cmd.ExecuteReader())
@@ -218,18 +246,9 @@ namespace CHSInventory.Nurse
                         cmbcategories.Text = reader["category"].ToString();
                         txtdosage.Text = reader["dosage"].ToString();
                         txtunitcost.Text = reader["unit_cost"].ToString();
-                        txtbatch.Text = reader["batch_no"].ToString();
-                        txtquantity.Text = reader["quantity"].ToString();
-                        datetimepickerexpiration.Value = Convert.ToDateTime(reader["expiration_date"]);
-                        datetimepickerdelivery.Value = Convert.ToDateTime(reader["delivery_date"]);
                     }
                 }
-
-                // ✅ Do NOT overwrite the grid here
-                // If you want to show all batches, call a separate button / method
-                // LoadAllBatchesForItem(txtitemcode.Text); // optional
             }
         }
-
     }
 }

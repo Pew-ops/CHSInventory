@@ -32,6 +32,8 @@
             this.txtsearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.datagridpatientsrecord = new System.Windows.Forms.DataGridView();
             this.btnmakeareport = new Guna.UI2.WinForms.Guna2Button();
+            this.btndelete = new Guna.UI2.WinForms.Guna2Button();
+            this.btnupdate = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagridpatientsrecord)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,6 +79,7 @@
             this.datagridpatientsrecord.RowTemplate.Height = 28;
             this.datagridpatientsrecord.Size = new System.Drawing.Size(1306, 524);
             this.datagridpatientsrecord.TabIndex = 24;
+            this.datagridpatientsrecord.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridpatientsrecord_CellClick);
             // 
             // btnmakeareport
             // 
@@ -88,17 +91,53 @@
             this.btnmakeareport.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnmakeareport.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnmakeareport.ForeColor = System.Drawing.Color.White;
-            this.btnmakeareport.Location = new System.Drawing.Point(1173, 780);
+            this.btnmakeareport.Location = new System.Drawing.Point(1186, 818);
             this.btnmakeareport.Name = "btnmakeareport";
             this.btnmakeareport.Size = new System.Drawing.Size(213, 67);
             this.btnmakeareport.TabIndex = 25;
             this.btnmakeareport.Text = "Make a Report";
             this.btnmakeareport.Click += new System.EventHandler(this.btnmakeareport_Click);
             // 
+            // btndelete
+            // 
+            this.btndelete.BorderRadius = 15;
+            this.btndelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btndelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btndelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btndelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btndelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btndelete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndelete.ForeColor = System.Drawing.Color.White;
+            this.btndelete.Location = new System.Drawing.Point(416, 832);
+            this.btndelete.Name = "btndelete";
+            this.btndelete.Size = new System.Drawing.Size(178, 67);
+            this.btndelete.TabIndex = 26;
+            this.btndelete.Text = "Delete";
+            this.btndelete.Click += new System.EventHandler(this.btndelete_Click);
+            // 
+            // btnupdate
+            // 
+            this.btnupdate.BorderRadius = 15;
+            this.btnupdate.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnupdate.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnupdate.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnupdate.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnupdate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnupdate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnupdate.ForeColor = System.Drawing.Color.White;
+            this.btnupdate.Location = new System.Drawing.Point(198, 832);
+            this.btnupdate.Name = "btnupdate";
+            this.btnupdate.Size = new System.Drawing.Size(162, 67);
+            this.btnupdate.TabIndex = 27;
+            this.btnupdate.Text = "Update";
+            this.btnupdate.Click += new System.EventHandler(this.btnupdate_Click);
+            // 
             // AdminPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnupdate);
+            this.Controls.Add(this.btndelete);
             this.Controls.Add(this.btnmakeareport);
             this.Controls.Add(this.datagridpatientsrecord);
             this.Controls.Add(this.txtsearch);
@@ -117,5 +156,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtsearch;
         private System.Windows.Forms.DataGridView datagridpatientsrecord;
         private Guna.UI2.WinForms.Guna2Button btnmakeareport;
+        private Guna.UI2.WinForms.Guna2Button btndelete;
+        private Guna.UI2.WinForms.Guna2Button btnupdate;
     }
 }

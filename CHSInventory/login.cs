@@ -141,5 +141,17 @@ namespace CHSInventory
         {
 
         }
+
+        private void cbShow_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbShow.Checked)
+            {
+                txtpassword1.PasswordChar = '\0';
+            }
+            else
+            {
+                txtpassword1.PasswordChar = '*';
+            }
+        }
     }
 }

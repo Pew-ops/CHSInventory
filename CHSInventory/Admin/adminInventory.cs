@@ -81,10 +81,10 @@ namespace CHSInventory
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 string query = @"
-                    SELECT item_code, item_name, category, dosage, quantity,
-                           batch_no, expiration_date, STATUS
-                    FROM medicine_receive
-                    ORDER BY expiration_date ASC";
+            SELECT item_code, item_name, category, dosage, quantity,
+                   batch_no, expiration_date, delivery_date, STATUS
+            FROM medicine_receive
+            ORDER BY expiration_date ASC";
 
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
@@ -94,6 +94,7 @@ namespace CHSInventory
                 datagridviewadmin.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
         }
+
 
         // ================= SEARCH MEDICINES =================
         private void txtsearch_TextChanged(object sender, EventArgs e)
@@ -101,16 +102,26 @@ namespace CHSInventory
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 string query = @"
-                    SELECT item_code, item_name, category, dosage, quantity,
-                           batch_no, expiration_date, STATUS
-                    FROM medicine_receive
-                    WHERE item_name LIKE @search
-                       OR batch_no LIKE @search
-                       OR category LIKE @search
-                    ORDER BY expiration_date ASC";
+        SELECT item_code, item_name, category, dosage, quantity,
+               batch_no, expiration_date, delivery_date, STATUS
+        FROM medicine_receive
+        WHERE 
+            item_name LIKE @search
+            OR category LIKE @search
+            OR batch_no LIKE @search
+            OR REPLACE(UPPER(batch_no), 'BATCH', '') LIKE @batchOnly
+        ORDER BY expiration_date ASC";
 
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
-                da.SelectCommand.Parameters.AddWithValue("@search", "%" + txtsearch.Text.Trim() + "%");
+
+                string searchText = txtsearch.Text.Trim().ToUpper();
+
+                // Extract numeric part (e.g. Batch002 → 002)
+                string numericBatch = System.Text.RegularExpressions.Regex
+                    .Replace(searchText, @"\D", "");
+
+                da.SelectCommand.Parameters.AddWithValue("@search", "%" + searchText + "%");
+                da.SelectCommand.Parameters.AddWithValue("@batchOnly", "%" + numericBatch + "%");
 
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -119,6 +130,8 @@ namespace CHSInventory
                 datagridviewadmin.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
         }
+
+
 
         private void datagridviewadmin_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

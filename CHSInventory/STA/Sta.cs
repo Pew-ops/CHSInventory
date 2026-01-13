@@ -46,5 +46,25 @@ namespace CHSInventory
         {
             Application.Exit();
         }
+
+        private void btnlogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+               "Do you want to logout?",
+               "Logout Confirmation",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question
+           );
+
+            if (result == DialogResult.Yes)
+            {
+                // Show login form again
+                Form1 loginForm = new Form1();
+                loginForm.Show();
+
+                // Close current dashboard form
+                this.FindForm().Close();
+            }
+        }
     }
 }

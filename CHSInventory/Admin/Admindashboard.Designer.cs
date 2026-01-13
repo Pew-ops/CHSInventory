@@ -68,7 +68,7 @@
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(131, 147);
+            this.panel1.Location = new System.Drawing.Point(138, 173);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1368, 287);
             this.panel1.TabIndex = 10;
@@ -262,7 +262,7 @@
             // datagridviewadmin
             // 
             this.datagridviewadmin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagridviewadmin.Location = new System.Drawing.Point(164, 505);
+            this.datagridviewadmin.Location = new System.Drawing.Point(164, 551);
             this.datagridviewadmin.Name = "datagridviewadmin";
             this.datagridviewadmin.RowHeadersWidth = 62;
             this.datagridviewadmin.RowTemplate.Height = 28;
@@ -281,7 +281,7 @@
             this.txtsearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtsearch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtsearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtsearch.Location = new System.Drawing.Point(164, 451);
+            this.txtsearch.Location = new System.Drawing.Point(164, 481);
             this.txtsearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtsearch.Name = "txtsearch";
             this.txtsearch.PlaceholderText = "Search Medicine...";

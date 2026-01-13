@@ -193,12 +193,6 @@
     <Compile Include="Nurse\NurseDashboard.Designer.cs">
       <DependentUpon>NurseDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Nurse\NurseInventory.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Nurse\NurseInventory.Designer.cs">
-      <DependentUpon>NurseInventory.cs</DependentUpon>
-    </Compile>
     <Compile Include="Nurse\NurseStock1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -267,9 +261,6 @@
     <EmbeddedResource Include="Nurse\NurseDashboard.resx">
       <DependentUpon>NurseDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Nurse\NurseInventory.resx">
-      <DependentUpon>NurseInventory.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="STA\Stareceive.resx">
       <DependentUpon>Stareceive.cs</DependentUpon>
     </EmbeddedResource>
@@ -323,6 +314,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\medical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

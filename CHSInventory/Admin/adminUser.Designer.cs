@@ -81,7 +81,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(494, 506);
             this.panel1.TabIndex = 6;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+           
             // 
             // cmbroleadmin
             // 
@@ -103,7 +103,7 @@
             this.cmbroleadmin.Name = "cmbroleadmin";
             this.cmbroleadmin.Size = new System.Drawing.Size(271, 36);
             this.cmbroleadmin.TabIndex = 23;
-            this.cmbroleadmin.SelectedIndexChanged += new System.EventHandler(this.cmbroleadmin_SelectedIndexChanged);
+            
             // 
             // txtpasswordadmin
             // 
@@ -124,7 +124,7 @@
             this.txtpasswordadmin.SelectedText = "";
             this.txtpasswordadmin.Size = new System.Drawing.Size(271, 51);
             this.txtpasswordadmin.TabIndex = 21;
-            this.txtpasswordadmin.TextChanged += new System.EventHandler(this.txtpasswordadmin_TextChanged);
+         
             // 
             // label8
             // 
@@ -175,7 +175,7 @@
             this.txtboxemailadmin.SelectedText = "";
             this.txtboxemailadmin.Size = new System.Drawing.Size(271, 51);
             this.txtboxemailadmin.TabIndex = 17;
-            this.txtboxemailadmin.TextChanged += new System.EventHandler(this.txtboxemailadmin_TextChanged);
+          
             // 
             // label3
             // 
@@ -206,7 +206,7 @@
             this.txtlastnameadmin.SelectedText = "";
             this.txtlastnameadmin.Size = new System.Drawing.Size(271, 51);
             this.txtlastnameadmin.TabIndex = 15;
-            this.txtlastnameadmin.TextChanged += new System.EventHandler(this.txtlastnameadmin_TextChanged);
+            
             // 
             // label2
             // 
@@ -237,7 +237,7 @@
             this.txtfirstnameadmin.SelectedText = "";
             this.txtfirstnameadmin.Size = new System.Drawing.Size(271, 51);
             this.txtfirstnameadmin.TabIndex = 13;
-            this.txtfirstnameadmin.TextChanged += new System.EventHandler(this.txtfirstnameadmin_TextChanged);
+       
             // 
             // btnaddadmin
             // 
@@ -262,7 +262,7 @@
             this.label6.Size = new System.Drawing.Size(114, 32);
             this.label6.TabIndex = 8;
             this.label6.Text = "All Users";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            
             // 
             // panel2
             // 

@@ -29,16 +29,15 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnexitsta = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnlogout = new Guna.UI2.WinForms.Guna2Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.guna2Button8 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.btnrecieve = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.btnexitsta = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +52,19 @@
             this.panel2.Size = new System.Drawing.Size(1587, 67);
             this.panel2.TabIndex = 3;
             // 
+            // btnexitsta
+            // 
+            this.btnexitsta.BackColor = System.Drawing.Color.Red;
+            this.btnexitsta.Font = new System.Drawing.Font("Segoe UI Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnexitsta.ForeColor = System.Drawing.Color.White;
+            this.btnexitsta.Location = new System.Drawing.Point(1531, 12);
+            this.btnexitsta.Name = "btnexitsta";
+            this.btnexitsta.Size = new System.Drawing.Size(44, 43);
+            this.btnexitsta.TabIndex = 1;
+            this.btnexitsta.Text = "X";
+            this.btnexitsta.UseVisualStyleBackColor = false;
+            this.btnexitsta.Click += new System.EventHandler(this.btnexitsta_Click);
+            // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -64,10 +76,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Firebrick;
+            this.panel1.Controls.Add(this.btnlogout);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.guna2Button8);
-            this.panel1.Controls.Add(this.guna2Button6);
             this.panel1.Controls.Add(this.guna2Button4);
             this.panel1.Controls.Add(this.btnrecieve);
             this.panel1.Controls.Add(this.guna2Button2);
@@ -76,6 +87,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(337, 1050);
             this.panel1.TabIndex = 4;
+            // 
+            // btnlogout
+            // 
+            this.btnlogout.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnlogout.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnlogout.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnlogout.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnlogout.FillColor = System.Drawing.Color.Firebrick;
+            this.btnlogout.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnlogout.ForeColor = System.Drawing.Color.White;
+            this.btnlogout.Location = new System.Drawing.Point(22, 961);
+            this.btnlogout.Name = "btnlogout";
+            this.btnlogout.Size = new System.Drawing.Size(282, 59);
+            this.btnlogout.TabIndex = 9;
+            this.btnlogout.Text = "LOG OUT";
+            this.btnlogout.Click += new System.EventHandler(this.btnlogout_Click);
             // 
             // label2
             // 
@@ -99,36 +126,6 @@
             this.label1.Size = new System.Drawing.Size(277, 40);
             this.label1.TabIndex = 0;
             this.label1.Text = "CHS MEDICINE";
-            // 
-            // guna2Button8
-            // 
-            this.guna2Button8.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button8.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button8.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button8.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button8.FillColor = System.Drawing.Color.Firebrick;
-            this.guna2Button8.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.guna2Button8.ForeColor = System.Drawing.Color.White;
-            this.guna2Button8.Location = new System.Drawing.Point(22, 637);
-            this.guna2Button8.Name = "guna2Button8";
-            this.guna2Button8.Size = new System.Drawing.Size(282, 59);
-            this.guna2Button8.TabIndex = 7;
-            this.guna2Button8.Text = "👤Profile";
-            // 
-            // guna2Button6
-            // 
-            this.guna2Button6.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button6.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button6.FillColor = System.Drawing.Color.Firebrick;
-            this.guna2Button6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.guna2Button6.ForeColor = System.Drawing.Color.White;
-            this.guna2Button6.Location = new System.Drawing.Point(22, 540);
-            this.guna2Button6.Name = "guna2Button6";
-            this.guna2Button6.Size = new System.Drawing.Size(282, 59);
-            this.guna2Button6.TabIndex = 5;
-            this.guna2Button6.Text = "⏰Expired";
             // 
             // guna2Button4
             // 
@@ -176,19 +173,6 @@
             this.guna2Button2.TabIndex = 2;
             this.guna2Button2.Text = "💊Inventory";
             // 
-            // btnexitsta
-            // 
-            this.btnexitsta.BackColor = System.Drawing.Color.Red;
-            this.btnexitsta.Font = new System.Drawing.Font("Segoe UI Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnexitsta.ForeColor = System.Drawing.Color.White;
-            this.btnexitsta.Location = new System.Drawing.Point(1531, 12);
-            this.btnexitsta.Name = "btnexitsta";
-            this.btnexitsta.Size = new System.Drawing.Size(44, 43);
-            this.btnexitsta.TabIndex = 1;
-            this.btnexitsta.Text = "X";
-            this.btnexitsta.UseVisualStyleBackColor = false;
-            this.btnexitsta.Click += new System.EventHandler(this.btnexitsta_Click);
-            // 
             // Sta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -216,11 +200,10 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button8;
-        private Guna.UI2.WinForms.Guna2Button guna2Button6;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
         private Guna.UI2.WinForms.Guna2Button btnrecieve;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private System.Windows.Forms.Button btnexitsta;
+        private Guna.UI2.WinForms.Guna2Button btnlogout;
     }
 }

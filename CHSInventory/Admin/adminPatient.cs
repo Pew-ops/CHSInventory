@@ -206,5 +206,156 @@ namespace CHSInventory.Admin
             }
         }
 
+        private void datagridpatientsrecord_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Select the clicked row
+                datagridpatientsrecord.Rows[e.RowIndex].Selected = true;
+            }
+        }
+
+        // ================== UPDATE PATIENT ==================
+        private void btnupdate_Click(object sender, EventArgs e)
+        {
+            if (datagridpatientsrecord.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a patient record to update.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DataGridViewRow selectedRow = datagridpatientsrecord.SelectedRows[0];
+            int patientId = Convert.ToInt32(selectedRow.Cells["id"].Value);
+            string studentName = selectedRow.Cells["student_name"].Value.ToString();
+            string program = selectedRow.Cells["program"].Value.ToString();
+            string complain = selectedRow.Cells["complain"].Value.ToString();
+            string nurseAssigned = selectedRow.Cells["nurse_assigned"].Value.ToString();
+
+            // Ask for new values
+            string newName = ShowInputDialog("Update Student Name:", "Update", studentName);
+            if (string.IsNullOrEmpty(newName)) return;
+
+            string newProgram = ShowInputDialog("Update Program:", "Update", program);
+            if (string.IsNullOrEmpty(newProgram)) return;
+
+            string newComplain = ShowInputDialog("Update Complaint:", "Update", complain);
+            if (string.IsNullOrEmpty(newComplain)) return;
+
+            string newNurse = ShowInputDialog("Update Nurse Assigned:", "Update", nurseAssigned);
+            if (string.IsNullOrEmpty(newNurse)) return;
+
+            // Update database
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    conn.Open();
+                    string query = @"
+                UPDATE medicine_dispense
+                SET student_name = @student_name,
+                    program = @program,
+                    complain = @complain,
+                    nurse_assigned = @nurse_assigned
+                WHERE id = @id";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@student_name", newName);
+                    cmd.Parameters.AddWithValue("@program", newProgram);
+                    cmd.Parameters.AddWithValue("@complain", newComplain);
+                    cmd.Parameters.AddWithValue("@nurse_assigned", newNurse);
+                    cmd.Parameters.AddWithValue("@id", patientId);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Patient record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadAllPatients();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No record was updated.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // ================== DELETE PATIENT ==================
+        private void btndelete_Click(object sender, EventArgs e)
+        {
+            if (datagridpatientsrecord.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a patient record to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DataGridViewRow selectedRow = datagridpatientsrecord.SelectedRows[0];
+            int patientId = Convert.ToInt32(selectedRow.Cells["id"].Value);
+
+            DialogResult dr = MessageBox.Show("Are you sure you want to delete this patient record?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr != DialogResult.Yes) return;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    conn.Open();
+                    // First delete the items related to this dispense
+                    string deleteItemsQuery = "DELETE FROM medicine_dispense_items WHERE dispense_id = @id";
+                    MySqlCommand cmdItems = new MySqlCommand(deleteItemsQuery, conn);
+                    cmdItems.Parameters.AddWithValue("@id", patientId);
+                    cmdItems.ExecuteNonQuery();
+
+                    // Then delete the main record
+                    string deleteQuery = "DELETE FROM medicine_dispense WHERE id = @id";
+                    MySqlCommand cmd = new MySqlCommand(deleteQuery, conn);
+                    cmd.Parameters.AddWithValue("@id", patientId);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Patient record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadAllPatients();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No record was deleted.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error deleting record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // ================== HELPER: SHOW INPUT DIALOG ==================
+        private string ShowInputDialog(string text, string caption, string defaultValue = "")
+        {
+            Form prompt = new Form()
+            {
+                Width = 400,
+                Height = 180,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                Text = caption,
+                StartPosition = FormStartPosition.CenterScreen
+            };
+            Label textLabel = new Label() { Left = 20, Top = 20, Text = text, Width = 340 };
+            TextBox textBox = new TextBox() { Left = 20, Top = 50, Width = 340, Text = defaultValue };
+            Button confirmation = new Button() { Text = "Ok", Left = 200, Width = 80, Top = 90, DialogResult = DialogResult.OK };
+            Button cancel = new Button() { Text = "Cancel", Left = 280, Width = 80, Top = 90, DialogResult = DialogResult.Cancel };
+            prompt.Controls.Add(textLabel);
+            prompt.Controls.Add(textBox);
+            prompt.Controls.Add(confirmation);
+            prompt.Controls.Add(cancel);
+            prompt.AcceptButton = confirmation;
+            prompt.CancelButton = cancel;
+
+            return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : null;
+        }
+
     }
 }

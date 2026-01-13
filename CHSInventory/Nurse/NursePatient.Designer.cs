@@ -223,6 +223,7 @@
             this.guna2TextBox7.SelectedText = "";
             this.guna2TextBox7.Size = new System.Drawing.Size(317, 46);
             this.guna2TextBox7.TabIndex = 21;
+            this.guna2TextBox7.TextChanged += new System.EventHandler(this.guna2TextBox7_TextChanged);
             // 
             // btnadd
             // 
@@ -256,6 +257,7 @@
             this.btnupdate.Size = new System.Drawing.Size(147, 55);
             this.btnupdate.TabIndex = 24;
             this.btnupdate.Text = "UPDATE";
+            this.btnupdate.Click += new System.EventHandler(this.btnupdate_Click);
             // 
             // cmbprogram
             // 
@@ -288,7 +290,7 @@
             this.chklistmedicine.Name = "chklistmedicine";
             this.chklistmedicine.Size = new System.Drawing.Size(267, 73);
             this.chklistmedicine.TabIndex = 28;
-            this.chklistmedicine.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chklistmedicine_ItemCheck_1);
+            
             // 
             // txtsearchmedicine
             // 

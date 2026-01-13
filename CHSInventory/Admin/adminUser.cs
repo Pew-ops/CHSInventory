@@ -1,75 +1,71 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Configuration;
-
-
 
 namespace CHSInventory
 {
     public partial class AdminUser : UserControl
     {
+        private int selectedUserId = -1;
+        private string connectionString =
+            ConfigurationManager.ConnectionStrings["CHSInventoryDB"].ConnectionString;
+
         public AdminUser()
         {
-            InitializeComponent(); 
-            dataGridView1.CellClick += dataGridView1_CellClick_1; // <- attach event in code
+            InitializeComponent();
+            dataGridView1.CellClick += dataGridView1_CellClick_1;
+            this.Load += AdminUser_Load;
         }
-               
-        private int selectedUserId = -1;
 
-        private void label2_Click(object sender, EventArgs e)
+        private void AdminUser_Load(object sender, EventArgs e)
         {
-
+            LoadUsers();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        // ================= LOAD USERS =================
+        public void LoadUsers()
         {
-
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM users", conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridView1.Columns["user_id"].Visible = false;
+            }
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        // ================= CELL CLICK =================
+        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-             
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                selectedUserId = Convert.ToInt32(row.Cells["user_id"].Value);
+                txtfirstnameadmin.Text = row.Cells["first_name"].Value.ToString();
+                txtlastnameadmin.Text = row.Cells["last_name"].Value.ToString();
+                txtboxemailadmin.Text = row.Cells["email"].Value.ToString();
+                cmbroleadmin.Text = row.Cells["role"].Value.ToString();
+            }
         }
 
-
-        private void txtfirstnameadmin_TextChanged(object sender, EventArgs e)
+        // ================= CLEAR FIELDS =================
+        private void ClearFields()
         {
-
+            txtfirstnameadmin.Clear();
+            txtlastnameadmin.Clear();
+            txtboxemailadmin.Clear();
+            txtpasswordadmin.Clear();
+            cmbroleadmin.SelectedIndex = -1;
+            selectedUserId = -1;
         }
 
-        private void txtlastnameadmin_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtboxemailadmin_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbroleadmin_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtpasswordadmin_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        // ================= ADD USER =================
         private void btnaddadmin_Click(object sender, EventArgs e)
         {
-            string connectionString = ConfigurationManager
-      .ConnectionStrings["CHSInventoryDB"].ConnectionString;
-
             string firstName = txtfirstnameadmin.Text.Trim();
             string lastName = txtlastnameadmin.Text.Trim();
             string email = txtboxemailadmin.Text.Trim();
@@ -92,7 +88,6 @@ namespace CHSInventory
                 try
                 {
                     conn.Open();
-
                     MySqlCommand cmd = new MySqlCommand("sp_add_user", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -104,11 +99,9 @@ namespace CHSInventory
                     cmd.Parameters.AddWithValue("p_status", status);
 
                     cmd.ExecuteNonQuery();
-
                     MessageBox.Show("User added successfully!");
-
                     ClearFields();
-                    LoadUsers(); // 🔥 refresh grid after insert
+                    LoadUsers();
                 }
                 catch (Exception ex)
                 {
@@ -117,66 +110,7 @@ namespace CHSInventory
             }
         }
 
-        private void btnclear_Click(object sender, EventArgs e)
-        {
-            txtfirstnameadmin.Clear();
-            txtlastnameadmin.Clear();
-            txtboxemailadmin.Clear();
-            txtpasswordadmin.Clear();
-            cmbroleadmin.SelectedIndex = -1;
-        }
-        private void ClearFields()
-        {
-            txtfirstnameadmin.Clear();
-            txtlastnameadmin.Clear();
-            txtboxemailadmin.Clear();
-            txtpasswordadmin.Clear();
-            cmbroleadmin.SelectedIndex = -1;
-        }
-
-
-        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-
-                // Make sure your DB column is exactly 'user_id'
-                selectedUserId = Convert.ToInt32(row.Cells["user_id"].Value);
-                txtfirstnameadmin.Text = row.Cells["first_name"].Value.ToString();
-                txtlastnameadmin.Text = row.Cells["last_name"].Value.ToString();
-                txtboxemailadmin.Text = row.Cells["email"].Value.ToString();
-                cmbroleadmin.Text = row.Cells["role"].Value.ToString();
-                dataGridView1.Columns["user_id"].Visible = false;
-
-
-                
-            }
-        }
-
-        public void LoadUsers()
-        {
-            string connectionString = ConfigurationManager
-       .ConnectionStrings["CHSInventoryDB"].ConnectionString;
-
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM users", conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                dataGridView1.DataSource = dt;
-
-                // 🔥 MAKE COLUMNS FILL THE GRID
-                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            }
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        // ================= UPDATE USER =================
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (selectedUserId == -1)
@@ -185,49 +119,27 @@ namespace CHSInventory
                 return;
             }
 
-            string connectionString = ConfigurationManager
-                .ConnectionStrings["CHSInventoryDB"].ConnectionString;
-
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 try
                 {
                     conn.Open();
+                    MySqlCommand cmd = new MySqlCommand("sp_update_user", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                    // Start building query
-                    string query = @"UPDATE users 
-                             SET first_name=@fname, 
-                                 last_name=@lname, 
-                                 email=@email, 
-                                 role=@role";
-
-                    // Add password update only if the textbox is not empty
-                    if (!string.IsNullOrWhiteSpace(txtpasswordadmin.Text))
-                    {
-                        query += ", password=@password";
-                    }
-
-                    query += " WHERE user_id=@id";
-
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@fname", txtfirstnameadmin.Text.Trim());
-                    cmd.Parameters.AddWithValue("@lname", txtlastnameadmin.Text.Trim());
-                    cmd.Parameters.AddWithValue("@email", txtboxemailadmin.Text.Trim());
-                    cmd.Parameters.AddWithValue("@role", cmbroleadmin.Text);
-                    cmd.Parameters.AddWithValue("@id", selectedUserId);
-
-                    if (!string.IsNullOrWhiteSpace(txtpasswordadmin.Text))
-                    {
-                        cmd.Parameters.AddWithValue("@password", txtpasswordadmin.Text.Trim());
-                    }
+                    cmd.Parameters.AddWithValue("p_user_id", selectedUserId);
+                    cmd.Parameters.AddWithValue("p_first_name", txtfirstnameadmin.Text.Trim());
+                    cmd.Parameters.AddWithValue("p_last_name", txtlastnameadmin.Text.Trim());
+                    cmd.Parameters.AddWithValue("p_email", txtboxemailadmin.Text.Trim());
+                    cmd.Parameters.AddWithValue("p_role", cmbroleadmin.Text);
+                    // Password is optional; pass NULL if empty
+                    cmd.Parameters.AddWithValue("p_password",
+                        string.IsNullOrWhiteSpace(txtpasswordadmin.Text) ? null : txtpasswordadmin.Text.Trim());
 
                     cmd.ExecuteNonQuery();
-
                     MessageBox.Show("User updated successfully!");
-
                     ClearFields();
                     LoadUsers();
-                    selectedUserId = -1;
                 }
                 catch (Exception ex)
                 {
@@ -236,11 +148,7 @@ namespace CHSInventory
             }
         }
 
-        private void AdminUser_Load(object sender, EventArgs e)
-        {
-            LoadUsers();
-        }
-
+        // ================= DELETE USER =================
         private void btndelete_Click(object sender, EventArgs e)
         {
             if (selectedUserId == -1)
@@ -258,27 +166,19 @@ namespace CHSInventory
 
             if (result != DialogResult.Yes) return;
 
-            string connectionString = ConfigurationManager
-                .ConnectionStrings["CHSInventoryDB"].ConnectionString;
-
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 try
                 {
                     conn.Open();
-
-                    string query = "DELETE FROM users WHERE user_id=@id"; // <-- FIXED
-
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@id", selectedUserId);
-
+                    MySqlCommand cmd = new MySqlCommand("sp_delete_user", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("p_user_id", selectedUserId);
                     cmd.ExecuteNonQuery();
 
-                  
-
+                    MessageBox.Show("User deleted successfully!");
                     ClearFields();
                     LoadUsers();
-                    selectedUserId = -1;
                 }
                 catch (Exception ex)
                 {
@@ -287,11 +187,10 @@ namespace CHSInventory
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        // ================= CLEAR BUTTON =================
+        private void btnclear_Click(object sender, EventArgs e)
         {
-
+            ClearFields();
         }
     }
-
-
 }
