@@ -37,7 +37,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.btnrecieve = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -81,7 +80,6 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.guna2Button4);
             this.panel1.Controls.Add(this.btnrecieve);
-            this.panel1.Controls.Add(this.guna2Button2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -97,7 +95,7 @@
             this.btnlogout.FillColor = System.Drawing.Color.Firebrick;
             this.btnlogout.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnlogout.ForeColor = System.Drawing.Color.White;
-            this.btnlogout.Location = new System.Drawing.Point(22, 961);
+            this.btnlogout.Location = new System.Drawing.Point(22, 929);
             this.btnlogout.Name = "btnlogout";
             this.btnlogout.Size = new System.Drawing.Size(282, 59);
             this.btnlogout.TabIndex = 9;
@@ -114,7 +112,6 @@
             this.label2.Size = new System.Drawing.Size(112, 32);
             this.label2.TabIndex = 0;
             this.label2.Text = "STA Panel";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -136,11 +133,12 @@
             this.guna2Button4.FillColor = System.Drawing.Color.Firebrick;
             this.guna2Button4.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2Button4.ForeColor = System.Drawing.Color.White;
-            this.guna2Button4.Location = new System.Drawing.Point(22, 346);
+            this.guna2Button4.Location = new System.Drawing.Point(22, 278);
             this.guna2Button4.Name = "guna2Button4";
             this.guna2Button4.Size = new System.Drawing.Size(282, 59);
             this.guna2Button4.TabIndex = 4;
             this.guna2Button4.Text = "🗑️Wastage";
+            this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
             // btnrecieve
             // 
@@ -151,27 +149,12 @@
             this.btnrecieve.FillColor = System.Drawing.Color.Firebrick;
             this.btnrecieve.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnrecieve.ForeColor = System.Drawing.Color.White;
-            this.btnrecieve.Location = new System.Drawing.Point(22, 447);
+            this.btnrecieve.Location = new System.Drawing.Point(22, 390);
             this.btnrecieve.Name = "btnrecieve";
             this.btnrecieve.Size = new System.Drawing.Size(282, 59);
             this.btnrecieve.TabIndex = 3;
             this.btnrecieve.Text = "📥Receive";
             this.btnrecieve.Click += new System.EventHandler(this.btnrecieve_Click);
-            // 
-            // guna2Button2
-            // 
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.Color.Firebrick;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(22, 256);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(282, 59);
-            this.guna2Button2.TabIndex = 2;
-            this.guna2Button2.Text = "💊Inventory";
             // 
             // Sta
             // 
@@ -202,7 +185,6 @@
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
         private Guna.UI2.WinForms.Guna2Button btnrecieve;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private System.Windows.Forms.Button btnexitsta;
         private Guna.UI2.WinForms.Guna2Button btnlogout;
     }

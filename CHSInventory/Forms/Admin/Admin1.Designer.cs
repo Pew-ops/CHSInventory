@@ -29,11 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.btnlogout = new Guna.UI2.WinForms.Guna2Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnsettingsAdmin = new Guna.UI2.WinForms.Guna2Button();
             this.btnexpiredAdmin = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
             this.btnuserAdmin = new Guna.UI2.WinForms.Guna2Button();
@@ -49,11 +47,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Firebrick;
-            this.panel1.Controls.Add(this.guna2Button1);
             this.panel1.Controls.Add(this.btnlogout);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btnsettingsAdmin);
             this.panel1.Controls.Add(this.btnexpiredAdmin);
             this.panel1.Controls.Add(this.guna2Button5);
             this.panel1.Controls.Add(this.btnuserAdmin);
@@ -66,21 +62,6 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // guna2Button1
-            // 
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Firebrick;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(23, 763);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(282, 64);
-            this.guna2Button1.TabIndex = 10;
-            this.guna2Button1.Text = "👤Profile";
-            // 
             // btnlogout
             // 
             this.btnlogout.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -90,7 +71,7 @@
             this.btnlogout.FillColor = System.Drawing.Color.Firebrick;
             this.btnlogout.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnlogout.ForeColor = System.Drawing.Color.White;
-            this.btnlogout.Location = new System.Drawing.Point(23, 1022);
+            this.btnlogout.Location = new System.Drawing.Point(23, 969);
             this.btnlogout.Name = "btnlogout";
             this.btnlogout.Size = new System.Drawing.Size(282, 59);
             this.btnlogout.TabIndex = 9;
@@ -120,21 +101,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "CHS MEDICINE";
             // 
-            // btnsettingsAdmin
-            // 
-            this.btnsettingsAdmin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnsettingsAdmin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnsettingsAdmin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnsettingsAdmin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnsettingsAdmin.FillColor = System.Drawing.Color.Firebrick;
-            this.btnsettingsAdmin.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnsettingsAdmin.ForeColor = System.Drawing.Color.White;
-            this.btnsettingsAdmin.Location = new System.Drawing.Point(23, 685);
-            this.btnsettingsAdmin.Name = "btnsettingsAdmin";
-            this.btnsettingsAdmin.Size = new System.Drawing.Size(282, 57);
-            this.btnsettingsAdmin.TabIndex = 6;
-            this.btnsettingsAdmin.Text = "⚙️Settings";
-            // 
             // btnexpiredAdmin
             // 
             this.btnexpiredAdmin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -144,7 +110,7 @@
             this.btnexpiredAdmin.FillColor = System.Drawing.Color.Firebrick;
             this.btnexpiredAdmin.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnexpiredAdmin.ForeColor = System.Drawing.Color.White;
-            this.btnexpiredAdmin.Location = new System.Drawing.Point(23, 594);
+            this.btnexpiredAdmin.Location = new System.Drawing.Point(23, 709);
             this.btnexpiredAdmin.Name = "btnexpiredAdmin";
             this.btnexpiredAdmin.Size = new System.Drawing.Size(282, 57);
             this.btnexpiredAdmin.TabIndex = 5;
@@ -160,7 +126,7 @@
             this.guna2Button5.FillColor = System.Drawing.Color.Firebrick;
             this.guna2Button5.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2Button5.ForeColor = System.Drawing.Color.White;
-            this.guna2Button5.Location = new System.Drawing.Point(23, 508);
+            this.guna2Button5.Location = new System.Drawing.Point(23, 596);
             this.guna2Button5.Name = "guna2Button5";
             this.guna2Button5.Size = new System.Drawing.Size(282, 61);
             this.guna2Button5.TabIndex = 3;
@@ -176,7 +142,7 @@
             this.btnuserAdmin.FillColor = System.Drawing.Color.Firebrick;
             this.btnuserAdmin.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnuserAdmin.ForeColor = System.Drawing.Color.White;
-            this.btnuserAdmin.Location = new System.Drawing.Point(23, 349);
+            this.btnuserAdmin.Location = new System.Drawing.Point(23, 369);
             this.btnuserAdmin.Name = "btnuserAdmin";
             this.btnuserAdmin.Size = new System.Drawing.Size(282, 60);
             this.btnuserAdmin.TabIndex = 3;
@@ -192,7 +158,7 @@
             this.btninventoryAdmin.FillColor = System.Drawing.Color.Firebrick;
             this.btninventoryAdmin.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btninventoryAdmin.ForeColor = System.Drawing.Color.White;
-            this.btninventoryAdmin.Location = new System.Drawing.Point(23, 427);
+            this.btninventoryAdmin.Location = new System.Drawing.Point(23, 484);
             this.btninventoryAdmin.Name = "btninventoryAdmin";
             this.btninventoryAdmin.Size = new System.Drawing.Size(282, 63);
             this.btninventoryAdmin.TabIndex = 2;
@@ -208,7 +174,7 @@
             this.btndashboardAdmin.FillColor = System.Drawing.Color.Firebrick;
             this.btndashboardAdmin.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btndashboardAdmin.ForeColor = System.Drawing.Color.White;
-            this.btndashboardAdmin.Location = new System.Drawing.Point(23, 284);
+            this.btndashboardAdmin.Location = new System.Drawing.Point(23, 264);
             this.btndashboardAdmin.Name = "btndashboardAdmin";
             this.btndashboardAdmin.Size = new System.Drawing.Size(282, 59);
             this.btndashboardAdmin.TabIndex = 1;
@@ -277,10 +243,8 @@
         private Guna.UI2.WinForms.Guna2Button btnuserAdmin;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2Button btnsettingsAdmin;
         private System.Windows.Forms.Button btnexitadmin;
         private System.Windows.Forms.Panel panel3;
         private Guna.UI2.WinForms.Guna2Button btnlogout;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

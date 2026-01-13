@@ -56,8 +56,6 @@
             this.txtstatus = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnupdate = new Guna.UI2.WinForms.Guna2Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2TextBox5 = new Guna.UI2.WinForms.Guna2TextBox();
             this.dataGridViewmedicine = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -73,7 +71,6 @@
             this.label9.Size = new System.Drawing.Size(426, 65);
             this.label9.TabIndex = 21;
             this.label9.Text = "Receive / Stock in";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label10
             // 
@@ -114,7 +111,6 @@
             this.label8.Size = new System.Drawing.Size(109, 28);
             this.label8.TabIndex = 27;
             this.label8.Text = "Categories:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label5
             // 
@@ -125,7 +121,6 @@
             this.label5.Size = new System.Drawing.Size(112, 28);
             this.label5.TabIndex = 24;
             this.label5.Text = "Item Name:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // txtitemname
             // 
@@ -235,7 +230,7 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Location = new System.Drawing.Point(21, 172);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(489, 833);
+            this.panel1.Size = new System.Drawing.Size(466, 833);
             this.panel1.TabIndex = 25;
             // 
             // label13
@@ -267,7 +262,6 @@
             this.txtsupplier.SelectedText = "";
             this.txtsupplier.Size = new System.Drawing.Size(286, 40);
             this.txtsupplier.TabIndex = 51;
-            this.txtsupplier.TextChanged += new System.EventHandler(this.txtsupplier_TextChanged);
             // 
             // datetimepickerdelivery
             // 
@@ -319,7 +313,7 @@
             this.btnadd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnadd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnadd.FillColor = System.Drawing.Color.Firebrick;
-            this.btnadd.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.btnadd.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnadd.ForeColor = System.Drawing.Color.White;
             this.btnadd.Location = new System.Drawing.Point(212, 740);
             this.btnadd.Name = "btnadd";
@@ -397,7 +391,6 @@
             this.label2.Size = new System.Drawing.Size(106, 28);
             this.label2.TabIndex = 41;
             this.label2.Text = "Item Code:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtitemcode
             // 
@@ -418,7 +411,6 @@
             this.txtitemcode.SelectedText = "";
             this.txtitemcode.Size = new System.Drawing.Size(286, 40);
             this.txtitemcode.TabIndex = 40;
-            this.txtitemcode.TextChanged += new System.EventHandler(this.txtitemcode_TextChanged);
             // 
             // label1
             // 
@@ -458,9 +450,9 @@
             this.btnupdate.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnupdate.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnupdate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnupdate.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.btnupdate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnupdate.ForeColor = System.Drawing.Color.White;
-            this.btnupdate.Location = new System.Drawing.Point(696, 740);
+            this.btnupdate.Location = new System.Drawing.Point(793, 736);
             this.btnupdate.Name = "btnupdate";
             this.btnupdate.Size = new System.Drawing.Size(161, 60);
             this.btnupdate.TabIndex = 46;
@@ -469,62 +461,23 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.guna2Button1);
-            this.panel2.Controls.Add(this.guna2TextBox5);
             this.panel2.Controls.Add(this.dataGridViewmedicine);
             this.panel2.Controls.Add(this.btnupdate);
-            this.panel2.Location = new System.Drawing.Point(527, 172);
+            this.panel2.Location = new System.Drawing.Point(493, 172);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(950, 833);
+            this.panel2.Size = new System.Drawing.Size(1072, 833);
             this.panel2.TabIndex = 30;
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.BorderRadius = 10;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(467, 740);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(156, 60);
-            this.guna2Button1.TabIndex = 47;
-            this.guna2Button1.Text = "Delete";
-            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
-            // 
-            // guna2TextBox5
-            // 
-            this.guna2TextBox5.BorderRadius = 10;
-            this.guna2TextBox5.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox5.DefaultText = "";
-            this.guna2TextBox5.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox5.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox5.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox5.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox5.Location = new System.Drawing.Point(27, 26);
-            this.guna2TextBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.guna2TextBox5.Name = "guna2TextBox5";
-            this.guna2TextBox5.PlaceholderText = "";
-            this.guna2TextBox5.SelectedText = "";
-            this.guna2TextBox5.Size = new System.Drawing.Size(432, 40);
-            this.guna2TextBox5.TabIndex = 38;
             // 
             // dataGridViewmedicine
             // 
             this.dataGridViewmedicine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewmedicine.Location = new System.Drawing.Point(3, 86);
+            this.dataGridViewmedicine.Location = new System.Drawing.Point(3, 66);
             this.dataGridViewmedicine.Name = "dataGridViewmedicine";
             this.dataGridViewmedicine.RowHeadersWidth = 62;
             this.dataGridViewmedicine.RowTemplate.Height = 28;
-            this.dataGridViewmedicine.Size = new System.Drawing.Size(944, 607);
+            this.dataGridViewmedicine.Size = new System.Drawing.Size(1066, 607);
             this.dataGridViewmedicine.TabIndex = 0;
-            this.dataGridViewmedicine.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClick);
+            this.dataGridViewmedicine.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewmedicine_CellContentClick);
             // 
             // Stareceive1
             // 
@@ -534,7 +487,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label9);
             this.Name = "Stareceive1";
-            this.Size = new System.Drawing.Size(1500, 1036);
+            this.Size = new System.Drawing.Size(1587, 1050);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -561,7 +514,6 @@
         private System.Windows.Forms.DataGridView dataGridViewmedicine;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2TextBox txtstatus;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox5;
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2TextBox txtitemcode;
         private System.Windows.Forms.Label label3;
@@ -575,6 +527,5 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker datetimepickerexpiration;
         private System.Windows.Forms.Label label13;
         private Guna.UI2.WinForms.Guna2TextBox txtsupplier;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

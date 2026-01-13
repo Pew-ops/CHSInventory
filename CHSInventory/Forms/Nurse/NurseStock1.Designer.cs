@@ -55,7 +55,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.dataGridViewmedicine = new System.Windows.Forms.DataGridView();
             this.btnupdate = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
@@ -76,6 +75,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.btnupdate);
             this.panel1.Controls.Add(this.txtsupplier);
             this.panel1.Controls.Add(this.datetimepickerdelivery);
             this.panel1.Controls.Add(this.datetimepickerexpiration);
@@ -186,7 +186,7 @@
             this.btnadd.FillColor = System.Drawing.Color.Firebrick;
             this.btnadd.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.btnadd.ForeColor = System.Drawing.Color.White;
-            this.btnadd.Location = new System.Drawing.Point(206, 757);
+            this.btnadd.Location = new System.Drawing.Point(55, 741);
             this.btnadd.Name = "btnadd";
             this.btnadd.Size = new System.Drawing.Size(165, 60);
             this.btnadd.TabIndex = 45;
@@ -445,29 +445,11 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.guna2Button1);
             this.panel2.Controls.Add(this.dataGridViewmedicine);
-            this.panel2.Controls.Add(this.btnupdate);
             this.panel2.Location = new System.Drawing.Point(565, 103);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(950, 833);
             this.panel2.TabIndex = 31;
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.BorderRadius = 10;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(449, 757);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(156, 61);
-            this.guna2Button1.TabIndex = 47;
-            this.guna2Button1.Text = "Delete";
             // 
             // dataGridViewmedicine
             // 
@@ -489,11 +471,12 @@
             this.btnupdate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnupdate.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.btnupdate.ForeColor = System.Drawing.Color.White;
-            this.btnupdate.Location = new System.Drawing.Point(728, 756);
+            this.btnupdate.Location = new System.Drawing.Point(284, 741);
             this.btnupdate.Name = "btnupdate";
             this.btnupdate.Size = new System.Drawing.Size(157, 61);
             this.btnupdate.TabIndex = 46;
             this.btnupdate.Text = "Update";
+            this.btnupdate.Click += new System.EventHandler(this.btnupdate_Click);
             // 
             // NurseStock1
             // 
@@ -542,7 +525,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private System.Windows.Forms.DataGridView dataGridViewmedicine;
         private Guna.UI2.WinForms.Guna2Button btnupdate;
     }

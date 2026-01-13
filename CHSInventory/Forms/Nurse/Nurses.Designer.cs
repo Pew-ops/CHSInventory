@@ -71,7 +71,7 @@
             this.btnlogout.FillColor = System.Drawing.Color.Firebrick;
             this.btnlogout.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnlogout.ForeColor = System.Drawing.Color.White;
-            this.btnlogout.Location = new System.Drawing.Point(29, 961);
+            this.btnlogout.Location = new System.Drawing.Point(29, 919);
             this.btnlogout.Name = "btnlogout";
             this.btnlogout.Size = new System.Drawing.Size(282, 59);
             this.btnlogout.TabIndex = 8;
@@ -109,7 +109,7 @@
             this.btnstock.FillColor = System.Drawing.Color.Firebrick;
             this.btnstock.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnstock.ForeColor = System.Drawing.Color.White;
-            this.btnstock.Location = new System.Drawing.Point(29, 722);
+            this.btnstock.Location = new System.Drawing.Point(29, 768);
             this.btnstock.Name = "btnstock";
             this.btnstock.Size = new System.Drawing.Size(282, 59);
             this.btnstock.TabIndex = 5;
@@ -125,7 +125,7 @@
             this.btnpatients.FillColor = System.Drawing.Color.Firebrick;
             this.btnpatients.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnpatients.ForeColor = System.Drawing.Color.White;
-            this.btnpatients.Location = new System.Drawing.Point(29, 629);
+            this.btnpatients.Location = new System.Drawing.Point(29, 643);
             this.btnpatients.Name = "btnpatients";
             this.btnpatients.Size = new System.Drawing.Size(282, 59);
             this.btnpatients.TabIndex = 3;
@@ -141,7 +141,7 @@
             this.btnDispense.FillColor = System.Drawing.Color.Firebrick;
             this.btnDispense.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnDispense.ForeColor = System.Drawing.Color.White;
-            this.btnDispense.Location = new System.Drawing.Point(29, 548);
+            this.btnDispense.Location = new System.Drawing.Point(29, 513);
             this.btnDispense.Name = "btnDispense";
             this.btnDispense.Size = new System.Drawing.Size(282, 59);
             this.btnDispense.TabIndex = 4;
@@ -157,7 +157,7 @@
             this.btnexpired.FillColor = System.Drawing.Color.Firebrick;
             this.btnexpired.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btnexpired.ForeColor = System.Drawing.Color.White;
-            this.btnexpired.Location = new System.Drawing.Point(29, 463);
+            this.btnexpired.Location = new System.Drawing.Point(29, 382);
             this.btnexpired.Name = "btnexpired";
             this.btnexpired.Size = new System.Drawing.Size(282, 59);
             this.btnexpired.TabIndex = 3;
@@ -173,7 +173,7 @@
             this.guna2Button2.FillColor = System.Drawing.Color.Firebrick;
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(29, 366);
+            this.guna2Button2.Location = new System.Drawing.Point(29, 256);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(282, 59);
             this.guna2Button2.TabIndex = 2;

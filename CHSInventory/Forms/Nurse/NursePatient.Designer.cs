@@ -58,9 +58,9 @@
             this.label9.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(54, 43);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(440, 65);
+            this.label9.Size = new System.Drawing.Size(438, 65);
             this.label9.TabIndex = 6;
-            this.label9.Text = "Patient / Despince";
+            this.label9.Text = "Patient / Dispense";
             // 
             // label1
             // 
@@ -290,7 +290,6 @@
             this.chklistmedicine.Name = "chklistmedicine";
             this.chklistmedicine.Size = new System.Drawing.Size(267, 73);
             this.chklistmedicine.TabIndex = 28;
-            
             // 
             // txtsearchmedicine
             // 

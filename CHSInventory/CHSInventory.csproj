@@ -113,155 +113,173 @@
     <Compile Include="Admin2.Designer.cs">
       <DependentUpon>Admin2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AdminExpired.cs">
+    <Compile Include="Forms\Admin\AdminExpired.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\AdminExpired.Designer.cs">
+    <Compile Include="Forms\Admin\AdminExpired.Designer.cs">
       <DependentUpon>AdminExpired.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AdminPatient.cs">
+    <Compile Include="Forms\Admin\AdminPatient.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\AdminPatient.Designer.cs">
+    <Compile Include="Forms\Admin\AdminPatient.Designer.cs">
       <DependentUpon>AdminPatient.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Admin1.cs">
+    <Compile Include="Forms\Admin\Admin1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\Admin1.Designer.cs">
+    <Compile Include="Forms\Admin\Admin1.Designer.cs">
       <DependentUpon>Admin1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Admindashboard.cs">
+    <Compile Include="Forms\Admin\Admindashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\Admindashboard.Designer.cs">
+    <Compile Include="Forms\Admin\Admindashboard.Designer.cs">
       <DependentUpon>Admindashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AdminInventory.cs">
+    <Compile Include="Forms\Admin\AdminInventory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\AdminInventory.Designer.cs">
+    <Compile Include="Forms\Admin\AdminInventory.Designer.cs">
       <DependentUpon>AdminInventory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AdminUser.cs">
+    <Compile Include="Forms\Admin\AdminUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\AdminUser.Designer.cs">
+    <Compile Include="Forms\Admin\AdminUser.Designer.cs">
       <DependentUpon>AdminUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\User1.cs" />
-    <Compile Include="Admin\UserFactory.cs" />
+    <Compile Include="Forms\Admin\User1.cs" />
+    <Compile Include="Forms\Admin\UserFactory.cs" />
+    <Compile Include="Forms\STA\staDisposal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\STA\staDisposal.Designer.cs">
+      <DependentUpon>staDisposal.cs</DependentUpon>
+    </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Nurse\AdminExpired.cs">
+    <Compile Include="Forms\Nurse\AdminExpired.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Nurse\AdminExpired.Designer.cs">
+    <Compile Include="Forms\Nurse\AdminExpired.Designer.cs">
       <DependentUpon>AdminExpired.cs</DependentUpon>
     </Compile>
-    <Compile Include="Nurse\NurseExpire.cs">
+    <Compile Include="Forms\Nurse\NurseExpire.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Nurse\NurseExpire.Designer.cs">
+    <Compile Include="Forms\Nurse\NurseExpire.Designer.cs">
       <DependentUpon>NurseExpire.cs</DependentUpon>
     </Compile>
-    <Compile Include="Nurse\NursePatient.cs">
+    <Compile Include="Forms\Nurse\NursePatient.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Nurse\NursePatient.Designer.cs">
+    <Compile Include="Forms\Nurse\NursePatient.Designer.cs">
       <DependentUpon>NursePatient.cs</DependentUpon>
     </Compile>
-    <Compile Include="Nurse\NursePatientsRecords.cs">
+    <Compile Include="Forms\Nurse\NursePatientsRecords.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Nurse\NursePatientsRecords.Designer.cs">
+    <Compile Include="Forms\Nurse\NursePatientsRecords.Designer.cs">
       <DependentUpon>NursePatientsRecords.cs</DependentUpon>
     </Compile>
-    <Compile Include="Nurse\Nurses.cs">
+    <Compile Include="Forms\Nurse\Nurses.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Nurse\Nurses.Designer.cs">
+    <Compile Include="Forms\Nurse\Nurses.Designer.cs">
       <DependentUpon>Nurses.cs</DependentUpon>
     </Compile>
-    <Compile Include="Nurse\NurseDashboard.cs">
+    <Compile Include="Forms\Nurse\NurseDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Nurse\NurseDashboard.Designer.cs">
+    <Compile Include="Forms\Nurse\NurseDashboard.Designer.cs">
       <DependentUpon>NurseDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Nurse\NurseStock1.cs">
+    <Compile Include="Forms\Nurse\NurseStock1.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Nurse\NurseStock1.Designer.cs">
+    <Compile Include="Forms\Nurse\NurseStock1.Designer.cs">
       <DependentUpon>NurseStock1.cs</DependentUpon>
     </Compile>
-    <Compile Include="STA\Stareceive.cs">
+    <Compile Include="Forms\STA\Stareceive.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="STA\Stareceive.Designer.cs">
+    <Compile Include="Forms\STA\Stareceive.Designer.cs">
       <DependentUpon>Stareceive.cs</DependentUpon>
     </Compile>
+    <Compile Include="Managers\InventoryManager.cs" />
+    <Compile Include="Managers\IssuanceManager.cs" />
+    <Compile Include="Managers\MedicalItemManager.cs" />
+    <Compile Include="Managers\PatientVisitManager.cs" />
+    <Compile Include="Managers\ReportManager.cs" />
+    <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="STA\Sta.cs">
+    <Compile Include="Forms\STA\Sta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="STA\Sta.Designer.cs">
+    <Compile Include="Forms\STA\Sta.Designer.cs">
       <DependentUpon>Sta.cs</DependentUpon>
     </Compile>
-    <Compile Include="STA\Stareceive1.cs">
+    <Compile Include="Forms\STA\Stareceive1.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="STA\Stareceive1.Designer.cs">
+    <Compile Include="Forms\STA\Stareceive1.Designer.cs">
       <DependentUpon>Stareceive1.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Admin2.resx">
       <DependentUpon>Admin2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Admin1.resx">
+    <EmbeddedResource Include="Forms\Admin\Admin1.resx">
       <DependentUpon>Admin1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Admindashboard.resx">
+    <EmbeddedResource Include="Forms\Admin\Admindashboard.resx">
       <DependentUpon>Admindashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\AdminExpired.resx">
+    <EmbeddedResource Include="Forms\Admin\AdminExpired.resx">
       <DependentUpon>AdminExpired.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\AdminInventory.resx">
+    <EmbeddedResource Include="Forms\Admin\AdminInventory.resx">
       <DependentUpon>AdminInventory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\AdminPatient.resx">
+    <EmbeddedResource Include="Forms\Admin\AdminPatient.resx">
       <DependentUpon>AdminPatient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\AdminUser.resx">
+    <EmbeddedResource Include="Forms\Admin\AdminUser.resx">
       <DependentUpon>AdminUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Nurse\NurseStock1.resx">
+      <DependentUpon>NurseStock1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\STA\staDisposal.resx">
+      <DependentUpon>staDisposal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Nurse\AdminExpired.resx">
+    <EmbeddedResource Include="Forms\Nurse\AdminExpired.resx">
       <DependentUpon>AdminExpired.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Nurse\NurseExpire.resx">
+    <EmbeddedResource Include="Forms\Nurse\NurseExpire.resx">
       <DependentUpon>NurseExpire.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Nurse\NursePatient.resx">
+    <EmbeddedResource Include="Forms\Nurse\NursePatient.resx">
       <DependentUpon>NursePatient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Nurse\NursePatientsRecords.resx">
+    <EmbeddedResource Include="Forms\Nurse\NursePatientsRecords.resx">
       <DependentUpon>NursePatientsRecords.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Nurse\Nurses.resx">
+    <EmbeddedResource Include="Forms\Nurse\Nurses.resx">
       <DependentUpon>Nurses.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Nurse\NurseDashboard.resx">
+    <EmbeddedResource Include="Forms\Nurse\NurseDashboard.resx">
       <DependentUpon>NurseDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="STA\Stareceive.resx">
+    <EmbeddedResource Include="Forms\STA\Stareceive.resx">
       <DependentUpon>Stareceive.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -274,10 +292,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="STA\Sta.resx">
+    <EmbeddedResource Include="Forms\STA\Sta.resx">
       <DependentUpon>Sta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="STA\Stareceive1.resx">
+    <EmbeddedResource Include="Forms\STA\Stareceive1.resx">
       <DependentUpon>Stareceive1.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -316,7 +334,7 @@
     <None Include="Resources\medical.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="NewFolder1\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

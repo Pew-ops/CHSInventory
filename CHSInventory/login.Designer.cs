@@ -99,7 +99,7 @@
             // 
             // txtemail1
             // 
-            this.txtemail1.BorderColor = System.Drawing.Color.Silver;
+            this.txtemail1.BorderColor = System.Drawing.Color.Black;
             this.txtemail1.BorderRadius = 15;
             this.txtemail1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtemail1.DefaultText = "";
@@ -107,13 +107,14 @@
             this.txtemail1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtemail1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtemail1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtemail1.FillColor = System.Drawing.Color.Gainsboro;
             this.txtemail1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtemail1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtemail1.ForeColor = System.Drawing.Color.Black;
             this.txtemail1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtemail1.Location = new System.Drawing.Point(637, 201);
             this.txtemail1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtemail1.Name = "txtemail1";
+            this.txtemail1.PlaceholderForeColor = System.Drawing.Color.White;
             this.txtemail1.PlaceholderText = "";
             this.txtemail1.SelectedText = "";
             this.txtemail1.Size = new System.Drawing.Size(497, 60);
@@ -122,6 +123,7 @@
             // 
             // txtpassword1
             // 
+            this.txtpassword1.BorderColor = System.Drawing.Color.Black;
             this.txtpassword1.BorderRadius = 15;
             this.txtpassword1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtpassword1.DefaultText = "";
@@ -129,9 +131,9 @@
             this.txtpassword1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtpassword1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtpassword1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtpassword1.FillColor = System.Drawing.Color.Gainsboro;
             this.txtpassword1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtpassword1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtpassword1.ForeColor = System.Drawing.Color.Black;
             this.txtpassword1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtpassword1.Location = new System.Drawing.Point(637, 325);
             this.txtpassword1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -147,14 +149,14 @@
             // 
             this.cmbrole1.AutoRoundedCorners = true;
             this.cmbrole1.BackColor = System.Drawing.Color.Transparent;
+            this.cmbrole1.BorderColor = System.Drawing.Color.Black;
             this.cmbrole1.BorderRadius = 17;
             this.cmbrole1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbrole1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbrole1.FillColor = System.Drawing.Color.Gainsboro;
             this.cmbrole1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbrole1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbrole1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbrole1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbrole1.ForeColor = System.Drawing.Color.Black;
             this.cmbrole1.ItemHeight = 30;
             this.cmbrole1.Items.AddRange(new object[] {
             "Admin",
