@@ -1,7 +1,5 @@
 ﻿using Guna.UI2.WinForms;
-using MySql.Data.MySqlClient;
 using System;
-using System.Configuration;
 using System.Data;
 using System.Windows.Forms;
 
@@ -9,14 +7,13 @@ namespace CHSInventory.Nurse
 {
     public partial class NurseDashboard : UserControl
     {
-        string connectionString =
-            ConfigurationManager.ConnectionStrings["CHSInventoryDB"].ConnectionString;
-
-        private Timer autoUpdateTimer; // Timer for auto-update
+        private InventoryManager inventoryManager;
+        private Timer autoUpdateTimer;
 
         public NurseDashboard()
         {
             InitializeComponent();
+            inventoryManager = new InventoryManager();
 
             // Setup auto-update timer
             autoUpdateTimer = new Timer();
@@ -27,21 +24,31 @@ namespace CHSInventory.Nurse
 
         private void NurseDashboard_Load(object sender, EventArgs e)
         {
-            UpdateMedicineStatus();   // 🔴 update once
-            LoadAllMedicines();       // 👁 read only
-            LoadTotalMedicine();
-            LoadNearlyExpiredCount();
-            LoadMonthlyPatientCount();
-            LoadLowStockCount();
+            try
+            {
+                // Update medicine status first
+                inventoryManager.UpdateMedicineStatus();
 
+                // Load all data
+                LoadAllMedicines();
+                LoadTotalMedicine();
+                LoadNearlyExpiredCount();
+                LoadMonthlyPatientCount();
+                LoadLowStockCount();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading dashboard: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // 🔄 Timer Tick Event for Auto-Update
+        // ================= AUTO-UPDATE TIMER =================
         private void AutoUpdateTimer_Tick(object sender, EventArgs e)
         {
             try
             {
-                UpdateMedicineStatus();
+                inventoryManager.UpdateMedicineStatus();
                 LoadTotalMedicine();
                 LoadNearlyExpiredCount();
                 LoadMonthlyPatientCount();
@@ -53,58 +60,50 @@ namespace CHSInventory.Nurse
             }
         }
 
-        // ✅ DISPLAY ALL MEDICINES
+        // ================= DISPLAY ALL MEDICINES =================
         private void LoadAllMedicines()
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            try
             {
-                string query = @"
-                    SELECT item_code, item_name, category, dosage, quantity,
-                           batch_no, expiration_date, STATUS
-                    FROM medicine_receive
-                    ORDER BY expiration_date ASC";
-
-                MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
+                DataTable dt = inventoryManager.GetAllDashboardMedicines();
                 datagridviewdashboard.DataSource = dt;
                 datagridviewdashboard.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
-        }
-
-        // ✅ TOTAL MEDICINE COUNT
-        private void LoadTotalMedicine()
-        {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            catch (Exception ex)
             {
-                conn.Open();
-                string query = "SELECT COUNT(*) FROM medicine_receive";
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                int total = Convert.ToInt32(cmd.ExecuteScalar());
-                lbltotalmedicine.Text = total.ToString();
+                MessageBox.Show($"Error loading medicines: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // ✅ SEARCH BY BATCH OR ITEM NAME
+        // ================= TOTAL MEDICINE COUNT =================
+        private void LoadTotalMedicine()
+        {
+            try
+            {
+                int total = inventoryManager.GetTotalMedicineCountDashboard();
+                lbltotalmedicine.Text = total.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading total medicine count: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // ================= SEARCH BY BATCH OR ITEM NAME =================
         private void txtsearch_TextChanged(object sender, EventArgs e)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            try
             {
-                string query = @"
-                    SELECT item_code, item_name, category, dosage, quantity,
-                           batch_no, expiration_date, STATUS
-                    FROM medicine_receive
-                    WHERE item_name LIKE @search
-                       OR batch_no LIKE @search
-                    ORDER BY expiration_date ASC";
-
-                MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
-                da.SelectCommand.Parameters.AddWithValue("@search", txtsearch.Text.Trim() + "%");
-
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                string searchText = txtsearch.Text.Trim();
+                DataTable dt = inventoryManager.SearchDashboardMedicines(searchText);
                 datagridviewdashboard.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error searching medicines: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -119,169 +118,108 @@ namespace CHSInventory.Nurse
             LoadTotalMedicine();
         }
 
+        // ================= NEARLY EXPIRED =================
         private void lblcountexpire_Click(object sender, EventArgs e)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            try
             {
-                string query = @"
-                    SELECT item_code, item_name, category, dosage, quantity,
-                           batch_no, expiration_date, STATUS
-                    FROM medicine_receive
-                    WHERE expiration_date 
-                          BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 30 DAY)
-                    ORDER BY expiration_date ASC";
-
-                MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
+                DataTable dt = inventoryManager.GetNearlyExpiredMedicinesDashboard();
                 datagridviewdashboard.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading nearly expired medicines: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void LoadNearlyExpiredCount()
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            try
             {
-                conn.Open();
-                string query = @"
-                    SELECT COUNT(*)
-                    FROM medicine_receive
-                    WHERE expiration_date 
-                          BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 30 DAY)";
-
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                int count = inventoryManager.GetNearlyExpiredCountDashboard();
                 lblcountexpire.Text = count.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading nearly expired count: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        // ================= MONTHLY PATIENTS =================
         private void lblpatient_Click(object sender, EventArgs e)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            try
             {
-                string query = @"
-                    SELECT student_id, student_name, program, complain, nurse_assigned, dispense_date
-                    FROM medicine_dispense
-                    WHERE MONTH(dispense_date) = MONTH(CURDATE())
-                      AND YEAR(dispense_date) = YEAR(CURDATE())
-                    ORDER BY dispense_date ASC";
-
-                MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
+                DataTable dt = inventoryManager.GetMonthlyPatientsDashboard();
                 datagridviewdashboard.DataSource = dt;
                 datagridviewdashboard.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading monthly patients: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void LoadMonthlyPatientCount()
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            try
             {
-                conn.Open();
-                string query = @"
-                    SELECT COUNT(*)
-                    FROM medicine_dispense
-                    WHERE MONTH(dispense_date) = MONTH(CURDATE())
-                      AND YEAR(dispense_date) = YEAR(CURDATE())";
-
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                object result = cmd.ExecuteScalar();
-                int total = (result != null && result != DBNull.Value) ? Convert.ToInt32(result) : 0;
-
+                int total = inventoryManager.GetMonthlyPatientCountDashboard();
                 lblpatient.Text = total.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading monthly patient count: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        // ================= LOW STOCK =================
         private void lbllowstock_Click(object sender, EventArgs e)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            try
             {
-                conn.Open();
-
-                string selectQuery = @"
-            SELECT item_code, item_name, category, dosage, quantity,
-                   batch_no, expiration_date, STATUS
-            FROM medicine_receive
-            WHERE category IN ('Medicine', 'First Aid') AND quantity <= 50
-            ORDER BY quantity ASC";
-
-                MySqlDataAdapter da = new MySqlDataAdapter(selectQuery, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
+                DataTable dt = inventoryManager.GetLowStockMedicinesDashboard();
                 datagridviewdashboard.DataSource = dt;
                 datagridviewdashboard.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-                string countQuery = @"
-            SELECT COUNT(*)
-            FROM medicine_receive
-            WHERE category IN ('Medicine', 'First Aid') AND quantity <= 50";
-
-                int lowStockCount = Convert.ToInt32(new MySqlCommand(countQuery, conn).ExecuteScalar());
-                lbllowstock.Text = lowStockCount.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading low stock medicines: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void LoadLowStockCount()
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            try
             {
-                conn.Open();
-                string query = @"
-            SELECT COUNT(*)
-            FROM medicine_receive
-            WHERE category IN ('Medicine', 'First Aid') AND quantity <= 50";
-
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                int count = inventoryManager.GetLowStockCountDashboard();
                 lbllowstock.Text = count.ToString();
             }
-        }
-
-        // 🔄 AUTO UPDATE MEDICINE STATUS
-        private void UpdateMedicineStatus()
-        {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            catch (Exception ex)
             {
-                conn.Open();
-
-                // 1️⃣ EXPIRED (highest priority)
-                string expiredQuery = @"
-            UPDATE medicine_receive
-            SET STATUS = 'Expired'
-            WHERE DATE(expiration_date) <= CURDATE()";
-
-                // 2️⃣ NEARLY EXPIRED
-                string nearlyExpiredQuery = @"
-            UPDATE medicine_receive
-            SET STATUS = 'Nearly Expired'
-            WHERE DATE(expiration_date) > CURDATE()
-              AND DATE(expiration_date) <= DATE_ADD(CURDATE(), INTERVAL 30 DAY)";
-
-                // 3️⃣ LOW STOCK (Medicine & First Aid only)
-                string lowStockQuery = @"
-            UPDATE medicine_receive
-            SET STATUS = 'Low Stock'
-            WHERE category IN ('Medicine', 'First Aid')   -- 🔴 change if DB uses different name
-              AND quantity < 50
-              AND DATE(expiration_date) > DATE_ADD(CURDATE(), INTERVAL 30 DAY)";
-
-                // 4️⃣ AVAILABLE
-                string availableQuery = @"
-            UPDATE medicine_receive
-            SET STATUS = 'Available'
-            WHERE quantity >= 50
-              AND DATE(expiration_date) > DATE_ADD(CURDATE(), INTERVAL 30 DAY)";
-
-                new MySqlCommand(expiredQuery, conn).ExecuteNonQuery();
-                new MySqlCommand(nearlyExpiredQuery, conn).ExecuteNonQuery();
-                new MySqlCommand(lowStockQuery, conn).ExecuteNonQuery();
-                new MySqlCommand(availableQuery, conn).ExecuteNonQuery();
+                MessageBox.Show($"Error loading low stock count: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        // ================= CLEANUP =================
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                // Stop and dispose the timer
+                if (autoUpdateTimer != null)
+                {
+                    autoUpdateTimer.Stop();
+                    autoUpdateTimer.Dispose();
+                }
+            }
+            base.Dispose(disposing);
+        }
     }
 }

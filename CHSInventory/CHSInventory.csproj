@@ -149,8 +149,8 @@
     <Compile Include="Forms\Admin\AdminUser.Designer.cs">
       <DependentUpon>AdminUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Admin\User1.cs" />
-    <Compile Include="Forms\Admin\UserFactory.cs" />
+    <Compile Include="Models\User1.cs" />
+    <Compile Include="Models\UserFactory.cs" />
     <Compile Include="Forms\STA\staDisposal.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -217,6 +217,7 @@
     <Compile Include="Managers\PatientVisitManager.cs" />
     <Compile Include="Managers\ReportManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\STA\Sta.cs">
@@ -333,8 +334,6 @@
   <ItemGroup>
     <None Include="Resources\medical.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
